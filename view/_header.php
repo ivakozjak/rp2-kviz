@@ -17,7 +17,7 @@
         <li><a href="ebuy.php?rt=products/add">Add a new product</a></li>
         <li><a href="ebuy.php?rt=products/bought">Shopping history</a></li>
         <li><a href="ebuy.php?rt=products/search">Search</a></li>
-        <li><a href="ebuy.php?rt=users/logout">Logout</a></li>
+        <li><a href="home.php?rt=users/logout">Odjava</a></li>
     </ul>
 
     <h2><?php if (isset($title)) echo $title; ?></h2>
