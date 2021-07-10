@@ -9,7 +9,7 @@
 
 <body>
     <div class="logodiv">
-        <img src="https://rp2.studenti.math.hr/~mdbenko/projekt/rp2-kviz/app/logo.jpg" alt="logo" width="130" height="80" class="image">
+        <img src="<?php echo $_SERVER['PHP_SELF'] . '/../app/logo.jpg' ?>" alt="logo" width="130" height="80" class="image">
     </div>
     <p>
         Registracija je uspješno provedena.<br />

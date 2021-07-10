@@ -1,18 +1,10 @@
-<?php require_once __DIR__ . '/_header.php'; ?>
+<?php require_once __DIR__ . '/_header.php';
 
-<form method="post" action="<?php echo __SITE_URL . '/ebuy.php?rt=quizzes/info' ?>">
-    <table>
-        <tr>
-            <th>Vrsta</th>
-        </tr>
-        <?php
-        foreach ($quizList as $quiz) {
-            echo '<tr>' .
-                '<td>' . $quiz->name . '<form>' . '</a>' .  '</td>' .
-                '</tr>';
-        }
-        ?>
-    </table>
-</form>
+foreach ($quizList as $quiz) {
+    $name = strtolower($quiz->name); //tako je spremljeno u mapi app
+    $path = dirname($_SERVER['PHP_SELF']);
+    echo '<img src="' . $path . '/app/' . $name . '.jpg" width="130" height="100" class="image_quiz">' .
+        '<p>' . $quiz->name . '</p>';
+}
 
-<?php require_once __DIR__ . '/_footer.php'; ?>
+require_once __DIR__ . '/_footer.php';
