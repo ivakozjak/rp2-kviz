@@ -9,8 +9,8 @@
 
 <body>
     <div class="logodiv">
-        <img src="<?php echo $_SERVER['PHP_SELF'] . '/../app/logo.jpg' ?>" alt="logo" width="130" height="80" class="image">
-        <h1 class="welcome">Bok</h1>
+        <img src="<?php echo $_SERVER['PHP_SELF'] . '/../app/logo.jpg' ?>" alt="logo" width="600" height="150" class="image">
+        <img src="<?php echo $_SERVER['PHP_SELF'] . '/../app/prijava.jpg' ?>" alt="logo" width="250" height="65" class="image2">
     </div>
     <div class="log">
         <form class="forma" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">

@@ -9,7 +9,8 @@
 
 <body>
     <div class="logodiv">
-        <img src="<?php echo dirname($_SERVER['PHP_SELF']) . '/../app/logo.jpg' ?>" alt="logo" width="130" height="80" class="image">
+        <img src="<?php echo dirname($_SERVER['PHP_SELF']) . '/../app/logo.jpg' ?>" alt="logo" width="600" height="150" class="image">
+        <img src="<?php echo dirname($_SERVER['PHP_SELF']) . '/../app/reg.jpg' ?>" alt="reg" width="320" height="45" class="image2">
     </div>
     <div class="log_2">
         <form class="forma" method="post" action="../home.php?rt=users/signUp">
