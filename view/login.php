@@ -23,6 +23,14 @@
         <p>Nemaš svoj račun?</p>
         <a href="view/register_index.php">Registriraj se</a>
     </div>
+    <div class="admin">
+        <p><b>Prijavi se kao admin</b></p>
+        <form class="forma_admin" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
+            <label>Ime <input type="text" name="username_admin"></label>
+            <label>Lozinka <input type="password" name="password_admin"></label>
+            <label><input class="ulogirajse" type="submit" value="Prijavi se" name="submit1"></label>
+        </form>
+    </div>
 </body>
 
 </html>
