@@ -50,7 +50,11 @@ function create_table_korisnici()
 			'password_hash varchar(255) NOT NULL,'.
 			'email varchar(50) NOT NULL,' .
 			'registration_sequence varchar(20) NOT NULL,' .
-			'has_registered int)'
+			'has_registered int,' .
+            'score_stem int,' .
+            'score_sport int,' .
+            'score_music int,' .
+            'score_film int )'
 		);
 
 		$st->execute();
