@@ -8,7 +8,7 @@ class QuizzesController
     {
         $service = new Service();
 
-        $title = 'Quiz list';
+        //$title = 'Quiz list';
         $quizList = $service->getAllQuizzes();
 
         require_once __DIR__ . '/../view/quizzes_index.php';

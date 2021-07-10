@@ -13,11 +13,8 @@
         <h1 class="welcome">Bok, <?php echo $_SESSION['login']; ?></h1>
     </div>
     <ul>
-        <li><a href="ebuy.php?rt=products">My products</a></li>
-        <li><a href="ebuy.php?rt=products/add">Add a new product</a></li>
-        <li><a href="ebuy.php?rt=products/bought">Shopping history</a></li>
-        <li><a href="ebuy.php?rt=products/search">Search</a></li>
+        <li><a href="home.php?rt=users/scores">Rezultati</a></li>
         <li><a href="home.php?rt=users/logout">Odjava</a></li>
     </ul>
 
-    <h2><?php if (isset($title)) echo $title; ?></h2>
+    <h2>Odaberi kviz za igru</h2>

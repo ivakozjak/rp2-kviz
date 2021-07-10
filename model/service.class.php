@@ -20,7 +20,19 @@ class Service
         if ($row === false)
             return null;
         else
-            return new User($row['id'], $row['is_admin'], $row['username'], $row['password_hash'], $row['email'], $row['registration_sequence'], $row['has_registered']);
+            return new User(
+                $row['id'],
+                $row['is_admin'],
+                $row['username'],
+                $row['password_hash'],
+                $row['email'],
+                $row['registration_sequence'],
+                $row['has_registered'],
+                $row['score_stem'],
+                $row['score_sport'],
+                $row['score_music'],
+                $row['score_film']
+            );
     }
 
 
@@ -36,7 +48,19 @@ class Service
 
         $arr = array();
         while ($row = $st->fetch()) {
-            $arr[] = new User($row['id'], $row['is_admin'],  $row['username'], $row['password_hash'], $row['email'], $row['registration_sequence'], $row['has_registered']);
+            $arr[] = new User(
+                $row['id'],
+                $row['is_admin'],
+                $row['username'],
+                $row['password_hash'],
+                $row['email'],
+                $row['registration_sequence'],
+                $row['has_registered'],
+                $row['score_stem'],
+                $row['score_sport'],
+                $row['score_music'],
+                $row['score_film']
+            );
         }
 
         return $arr;

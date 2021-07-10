@@ -13,6 +13,11 @@ class UsersController
         require_once __DIR__ . '/../view/users_index.php';
     }
 
+    public function scores()
+    {
+        echo "tu ćemo imat statistiku";
+    }
+
     public function logout()
     {
         session_unset();
