@@ -83,4 +83,8 @@ class Service
 
         return $arr;
     }
+
+    function addQuiz()
+    {
+    }
 };

@@ -10,11 +10,8 @@
 <body>
     <div class="logodiv">
         <img src="<?php echo $_SERVER['PHP_SELF'] . '/../app/logo.jpg' ?>" alt="logo" width="600" height="150" class="image">
-        <h1 class="welcome"><?php echo $_SESSION['login']; ?></h1>
+        <h1 class="welcome">Admin: <?php echo $_SESSION['login']; ?></h1>
     </div>
     <ul>
-        <li><a href="home.php?rt=users/scores">Rezultati</a></li>
         <li><a href="home.php?rt=users/logout">Odjava</a></li>
     </ul>
-
-    <h2>Odaberi kviz za igru</h2>
