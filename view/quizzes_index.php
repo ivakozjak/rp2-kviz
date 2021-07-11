@@ -31,7 +31,7 @@
             echo "<br>";
           }
           ?>
-          <button class="ulogirajse" type="submit" name="submit" value="<?php echo $quiz->id; ?>" id="btn_start">Odaberi</button>
+          <button class="start_quiz" type="submit" name="submit" value="<?php echo $quiz->id; ?>" >Odaberi</button>
         </div>
       </div>
     </div>
@@ -44,12 +44,12 @@
     var answers = [];
 
     $(document).ready(function() {
-      $("#btn_start").on("click", startQuiz);
+      $(".start_quiz").on("click", startQuiz);
     });
 
     startQuiz = function() {
 
-      let quizId = parseInt($("#btn_start").val());
+      let quizId = parseInt($(this).val());
       console.log(quizId);
       $.ajax({
         url: "home.php?rt=quizzes/open",
