@@ -16,11 +16,26 @@ class QuizzesController
 
     public function open()
     {
-        //$service = new Service();
+        //$questions = Service::getAllQuestions($_POST['quizId']);
+        $service = new Service();
+        $quizId = (int)$_POST['id'];
 
-        //$title = 'Quiz list';
-        $questions = Service::getAllQuestions($_POST['quizId']);
+        $questions = $service->getAllQuestions($quizId);
+        $answers = $service->getAllAnswers();
+        $response = [];
+        $response['questions'] = $questions;
+        $response['answers'] = $answers;
 
-        require_once __DIR__ . '/../view/quizzes_open.php';
+        sendJSONandExit($response);
+        //require_once __DIR__ . '/../view/quizzes_open.php';
     }
 };
+
+function sendJSONandExit($message)
+{
+    // Kao izlaz skripte pošalji $message u JSON formatu i prekini izvođenje.
+    header('Content-type:application/json;charset=utf-8');
+    echo json_encode($message);
+    flush();
+    exit(0);
+}

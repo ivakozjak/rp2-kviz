@@ -2,14 +2,14 @@
 
 class Question
 {
-    protected $id, $id_quiz, $id_type, $question;
+    protected $id, $id_question, $is_true, $answer;
 
-    function __construct($id, $id_quiz, $id_type, $question)
+    function __construct($id, $id_question, $is_true, $answer)
     {
         $this->id = $id;
-        $this->id_quiz = $id_quiz;
-        $this->id_type = $id_type;
-        $this->question = $question;
+        $this->id_question = $id_question;
+        $this->is_true = $is_true;
+        $this->answer = $answer;
     }
 
     function __get($prop)

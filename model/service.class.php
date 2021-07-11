@@ -106,13 +106,7 @@ class Service
         } catch (PDOException $e) {
             exit('PDO error ' . $e->getMessage());
         }
-
-        /*$arr = array();
-		while ($row = $st->fetch()) {
-			$arr[] = new Product($row['id'], $row['id_user'], $row['name'], $row['description'], $row['price']);
-		}*/
         return true;
-        //return $arr;
     }
     static function getAllQuestions($q_id)
     {
@@ -126,24 +120,29 @@ class Service
 
         $arr = array();
         while ($row = $st->fetch()) {
-            
-            try {
-                $db = DB::getConnection();
-                $st1 = $db->prepare('SELECT answer FROM kviz_odgovori WHERE id_question=:x AND is_true = 1');
-                $st1->execute(array('x' => $row['id']));
-            } catch (PDOException $e) {
-                exit('PDO error ' . $e->getMessage());
-            }
-
-            $row1 = $st1->fetch();
-
-            $arr[] = new Question($row['id'], $row['id_quiz'],  $row['id_type'], $row['question'], $row1['answer']);
+            $arr[] = new Question($row['id'], $row['id_quiz'],  $row['id_type'], $row['question']);
         }
 
         return $arr;
     }
 
+    function getAllAnswers()
+    {
+        try {
+            $db = DB::getConnection();
+            $st = $db->prepare('SELECT * FROM kviz_odgovori');
+            $st->execute();
+        } catch (PDOException $e) {
+            exit('PDO error ' . $e->getMessage());
+        }
 
+        $arr = array();
+        while ($row = $st->fetch()) {
+            $arr[] = new Answer($row['id'], $row['id_question'], $row['is_true'], $row['answer']);
+        }
+
+        return $arr;
+    }
 
     static function getAnswers($q_id)
     {
@@ -156,13 +155,13 @@ class Service
         }
 
         $arr = array();
-        while ($row = $st->fetch()) 
+        while ($row = $st->fetch())
             $arr[] = $row['answer'];
-        
+
 
         return $arr;
     }
-function getScores($username)
+    function getScores($username)
     {
         try {
             $db = DB::getConnection();
@@ -208,11 +207,11 @@ function getScores($username)
     }
 
 
-    
+
     function addQuestion()
     {
-      
-    /*    try {
+
+        /*    try {
             $db = DB::getConnection();
             $st = $db->prepare('');
             $st->bindParam(1, $category, PDO::PARAM_STR);
@@ -226,6 +225,5 @@ function getScores($username)
 
        
         return true;*/
-        
     }
 };
