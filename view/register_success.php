@@ -15,5 +15,3 @@
         Registracija je uspješno provedena.<br />
         Sad se možeš ulogirati preko <a href="home.php">početne stranice</a>.
     </p>
-
-<?php require_once __DIR__ . '/_footer.php';?>

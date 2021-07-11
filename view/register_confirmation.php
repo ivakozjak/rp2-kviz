@@ -14,5 +14,3 @@
     <p>
         Provjeri svoj email i klikni na potvrdu registracije. Tada će registracija biti završena.
     </p>
-
-<?php require_once __DIR__ . '/_footer.php';?>

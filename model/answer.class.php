@@ -1,6 +1,6 @@
 <?php
 
-class Question
+class Answer
 {
     protected $id, $id_question, $is_true, $answer;
 

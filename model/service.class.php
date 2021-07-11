@@ -4,6 +4,8 @@ require_once __DIR__ . '/../app/database/db.class.php';
 require_once __DIR__ . '/user.class.php';
 require_once __DIR__ . '/quiz.class.php';
 require_once __DIR__ . '/question.class.php';
+require_once __DIR__ . '/answer.class.php';
+
 
 class Service
 {
@@ -108,7 +110,7 @@ class Service
         }
         return true;
     }
-    static function getAllQuestions($q_id)
+    function getAllQuestions($q_id)
     {
         try {
             $db = DB::getConnection();
@@ -144,7 +146,7 @@ class Service
         return $arr;
     }
 
-    static function getAnswers($q_id)
+    function getAnswers($q_id)
     {
         try {
             $db = DB::getConnection();

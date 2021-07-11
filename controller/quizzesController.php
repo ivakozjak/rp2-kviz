@@ -19,10 +19,11 @@ class QuizzesController
         //$questions = Service::getAllQuestions($_POST['quizId']);
         $service = new Service();
         $quizId = (int)$_POST['id'];
+        $response = [];
 
         $questions = $service->getAllQuestions($quizId);
         $answers = $service->getAllAnswers();
-        $response = [];
+
         $response['questions'] = $questions;
         $response['answers'] = $answers;
 

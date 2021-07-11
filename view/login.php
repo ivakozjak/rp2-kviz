@@ -31,5 +31,6 @@
             <label><input class="ulogirajse" type="submit" value="Prijavi se" name="submit1"></label>
         </form>
     </div>
+</body>
 
-<?php require_once __DIR__ . '/_footer.php';?>
+</html>

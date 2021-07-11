@@ -41,6 +41,8 @@
   <script src="JS/flip.js"></script>
   <script>
     var questions = [];
+    var answers = [];
+
     $(document).ready(function() {
       $("#btn_start").on("click", startQuiz);
     });
@@ -48,15 +50,15 @@
     startQuiz = function() {
 
       let quizId = parseInt($("#btn_start").val());
-      console.log("hehe", typeof(quizId));
+      console.log(quizId);
       $.ajax({
         url: "home.php?rt=quizzes/open",
         data: {
           id: quizId
         },
-        type: "post",
-        dataType: "json",
+        method: 'POST',
         success: function(data) {
+          console.log(data);
           questions = data.questions;
           answers = data.answers;
           console.log(questions, answers);
@@ -65,6 +67,8 @@
           alert("Nešto je pošlo po zlu!");
         }
       });
+
+      console.log(questions, answers);
     }
   </script>
 </div>
@@ -73,4 +77,4 @@
 </html>
 <?php
 
-require_once __DIR__ . '/_footer.php';
+require_once  __DIR__ . '/_footer.php';

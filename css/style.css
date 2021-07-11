@@ -75,13 +75,12 @@ li a:hover {
   margin-right: auto;
 }
 .log {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
   border-style: solid;
   border-width: 1px;
   border-radius: 5px;
   border-color: rgb(156, 156, 156);
+  position: relative;
+  transform: translateX(150%);
   width: 300px;
   height: 150px;
   margin-top: 5%;
@@ -196,13 +195,12 @@ td {
   border-radius: 0px;
 }
 .signup {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
   border-style: solid;
   border-width: 1px;
   border-radius: 5px;
   border-color: rgb(156, 156, 156);
+  position: relative;
+  transform: translateX(150%);
   width: 300px;
   height: 90px;
   margin-top: 2%;
@@ -211,13 +209,12 @@ td {
   text-align: center;
 }
 .admin {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
   border-style: solid;
   border-width: 1px;
   border-radius: 5px;
   border-color: rgb(156, 156, 156);
+  position: relative;
+  transform: translateX(150%);
   width: 300px;
   height: 200px;
   margin-top: 2%;
@@ -226,13 +223,12 @@ td {
   text-align: center;
 }
 .log_2 {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
   border-style: solid;
   border-width: 1px;
   border-radius: 5px;
   border-color: rgb(156, 156, 156);
+  position: relative;
+  transform: translateX(150%);
   width: 300px;
   height: 180px;
   margin-top: 5%;
@@ -287,23 +283,4 @@ td {
 .image_quiz{
     
     padding-top: 85px;
-}
-
-.logofaks {
-    padding-top: 10px;
-  float: left;
-  font-size: 13px;
-}
-
-.footer2 {
-    float: left;
-    font-size: 13px;
-}
-
-.footer {
-       left: 0;
-       bottom: 0;
-   width: 100%;
-   color: gray;
-   background color: white;
 }
