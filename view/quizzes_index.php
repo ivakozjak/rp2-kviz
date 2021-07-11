@@ -10,7 +10,9 @@
       <div class="kartica" onclick="flip(event)">
         <div class="kartica-front">
           <?php
-          echo '<img src="' . $path . '/app/' . $name . '.jpg" width="240" height="80" class="image_quiz">' . '<p>' . $quiz->name . '</p>';
+            if(file_exists('app/' . $name . '.jpg'))
+                echo '<img src="' . $path . '/app/' . $name . '.jpg" width="240" height="80" class="image_quiz">' . '<p>' . $quiz->name . '</p>';
+            else echo '<br><br><br><br><br><br><p>' . $quiz->name . '</p>';
           ?>
         </div>
         <div class="kartica-back">Tipovi pitanja:
