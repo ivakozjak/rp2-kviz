@@ -19,7 +19,7 @@ class QuizzesController
         //$service = new Service();
 
         //$title = 'Quiz list';
-        $questions = Service::getAllQuestions(1);
+        $questions = Service::getAllQuestions($_POST['quizId']);
 
         require_once __DIR__ . '/../view/quizzes_open.php';
     }

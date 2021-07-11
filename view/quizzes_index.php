@@ -33,6 +33,7 @@
           }
           ?> 
         <input type="submit" value="Odaberi">
+        <input type="hidden" name="quizId" value = "<?php echo $quiz->id;?> ">
 </form>
 
 
