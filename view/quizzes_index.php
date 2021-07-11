@@ -7,7 +7,7 @@ foreach ($quizList as $quiz) {
     $path = dirname($_SERVER['PHP_SELF']);
     ?>
     <div class="maincontainer">
-      <div class="kartica">
+      <div class="kartica" onclick="flip(event)">
         <div class="kartica-front">
     <?php
         echo '<img src="' . $path . '/app/' . $name . '.jpg" width="240" height="80" class="image_quiz">' . '<p>' . $quiz->name . '</p>';
@@ -19,6 +19,7 @@ foreach ($quizList as $quiz) {
     <?php
 }
 ?>
+<script src="JS/flip.js"></script>
 </div>
 </body>
 
