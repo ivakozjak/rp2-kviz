@@ -162,6 +162,34 @@ class Service
 
         return $arr;
     }
+function getScores($username)
+    {
+        try {
+            $db = DB::getConnection();
+            $st = $db->prepare('SELECT * FROM kviz_korisnici WHERE username=:x');
+            $st->execute(array('x' => $username));
+        } catch (PDOException $e) {
+            exit('PDO error ' . $e->getMessage());
+        }
+
+        $row = $st->fetch();
+        $score = new User(
+            $row['id'],
+            $row['is_admin'],
+            $row['username'],
+            $row['password_hash'],
+            $row['email'],
+            $row['registration_sequence'],
+            $row['has_registered'],
+            $row['score_stem'],
+            $row['score_sport'],
+            $row['score_music'],
+            $row['score_film']
+        );
+
+        return $score;
+    }
+
     function getQuizById($id)
     {
         try {
