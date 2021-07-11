@@ -1,6 +1,6 @@
 <?php require_once __DIR__ . '/_header.php';
 ?>
-<div class="grid-container">
+<div class="grid-container" id="main_container">
   <?php
   foreach ($quizList as $quiz) {
     $name = strtolower($quiz->name); //tako je spremljeno u mapi app
@@ -31,44 +31,52 @@
             echo "<br>";
           }
           ?>
-          <button class="start_quiz" type="submit" name="submit" value="<?php echo $quiz->id; ?>" >Odaberi</button>
+          <button class="start_quiz" type="submit" name="submit" value="<?php echo $quiz->id; ?>">Odaberi</button>
         </div>
       </div>
     </div>
   <?php
   }
   ?>
-  <script src="JS/flip.js"></script>
-  <script>
-    var questions = [];
-    var answers = [];
 
-    $(document).ready(function() {
-      $(".start_quiz").on("click", startQuiz);
+</div>
+<script src="JS/flip.js"></script>
+<script>
+  var questions = [];
+  var answers = [];
+
+  $(document).ready(function() {
+    $(".start_quiz").on("click", startQuiz);
+  });
+
+  startQuiz = function() {
+
+    let quizId = parseInt($(this).val());
+    console.log(quizId);
+    $.ajax({
+      url: "home.php?rt=quizzes/open",
+      data: {
+        id: quizId
+      },
+      method: 'POST',
+      success: function(data) {
+        questions = data.questions;
+        answers = data.answers;
+        console.log(questions, answers);
+        showQuestions(questions);
+
+      },
+      error: function(xhr, status, errorThrown) {
+        alert("Nešto je pošlo po zlu!");
+      }
     });
 
-    startQuiz = function() {
-
-      let quizId = parseInt($(this).val());
-      console.log(quizId);
-      $.ajax({
-        url: "home.php?rt=quizzes/open",
-        data: {
-          id: quizId
-        },
-        method: 'POST',
-        success: function(data) {
-          questions = data.questions;
-          answers = data.answers;
-          console.log(questions, answers);
-        },
-        error: function(xhr, status, errorThrown) {
-          alert("Nešto je pošlo po zlu!");
-        }
-      });
+    let showQuestions = function(arr) {
+      $("#main_container").remove();
+      $("body").append("<p>" + arr + "<p>");
     }
-  </script>
-</div>
+  }
+</script>
 </body>
 
 </html>
