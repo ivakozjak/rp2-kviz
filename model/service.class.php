@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../app/database/db.class.php';
 require_once __DIR__ . '/user.class.php';
 require_once __DIR__ . '/quiz.class.php';
+require_once __DIR__ . '/question.class.php';
 
 class Service
 {
@@ -112,5 +113,33 @@ class Service
 		}*/
         return true;
         //return $arr;
+    }
+    static function getAllQuestions($q_id)
+    {
+        try {
+            $db = DB::getConnection();
+            $st = $db->prepare('SELECT * FROM kviz_pitanja WHERE id_quiz=:x');
+            $st->execute(array('x' => $q_id));
+        } catch (PDOException $e) {
+            exit('PDO error ' . $e->getMessage());
+        }
+
+        $arr = array();
+        while ($row = $st->fetch()) {
+            
+            try {
+                $db = DB::getConnection();
+                $st1 = $db->prepare('SELECT answer FROM kviz_odgovori WHERE id_question=:x AND is_true = 1');
+                $st1->execute(array('x' => $row['id']));
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+
+            $row1 = $st1->fetch();
+
+            $arr[] = new Question($row['id'], $row['id_quiz'],  $row['id_type'], $row['question'], $row1['answer']);
+        }
+
+        return $arr;
     }
 };

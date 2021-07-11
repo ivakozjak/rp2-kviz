@@ -13,4 +13,14 @@ class QuizzesController
 
         require_once __DIR__ . '/../view/quizzes_index.php';
     }
+
+    public function open()
+    {
+        //$service = new Service();
+
+        //$title = 'Quiz list';
+        $questions = Service::getAllQuestions(1);
+
+        require_once __DIR__ . '/../view/quizzes_open.php';
+    }
 };
