@@ -14,5 +14,6 @@
         <h1 class="welcome">Admin: <?php echo $_SESSION['login']; ?></h1>
     </div>
     <ul>
+        <li><a href="admin.php">Profil</a></li>
         <li><a href="home.php?rt=users/logout">Odjava</a></li>
     </ul>

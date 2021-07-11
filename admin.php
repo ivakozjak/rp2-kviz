@@ -49,6 +49,11 @@ if (
     && hasRegistered($_POST['username_admin']) && isAdmin($_POST['username_admin'])
 ) {
     $_SESSION['login'] = $_POST['username_admin'];
+} else if (
+    isset($_POST['username_admin']) && isset($_POST['password_admin']) && validate($_POST['username_admin'], $_POST['password_admin'])
+    && hasRegistered($_POST['username_admin']) && !isAdmin($_POST['username_admin'])
+) {
+    header('Location: home.php');
 }
 
 unset($admin);

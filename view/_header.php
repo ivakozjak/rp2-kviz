@@ -13,6 +13,7 @@
         <h1 class="welcome"><?php echo $_SESSION['login']; ?></h1>
     </div>
     <ul>
+        <li><a href="home.php?rt=quizzes">Profil</a></li>
         <li><a href="home.php?rt=users/scores">Rezultati</a></li>
         <li><a href="home.php?rt=users/logout">Odjava</a></li>
     </ul>

@@ -28,21 +28,27 @@ require_once __DIR__ . '/header_admin.php';
         console.log("kategorija:", $("#category").val());
         console.log("označeno:", marked);
 
-        $.ajax({
-            url: "admin.php?rt=admin/addQuiz",
-            data: {
-                kategorija: $("#category").val(),
-                tipovi: marked
-            },
-            type: "post",
-            dataType: "json",
-            success: function(data) {
-                alert(data);
-            },
-            error: function(xhr, status, errorThrown) {
-                alert("nije uspjelo!");
-            }
-        });
+        if ($("#category").val() === "") {
+            alert("Kviz treba imati kategoriju(naziv)!");
+        } else if (marked.length === 0) {
+            alert("Treba biti odabrana barem jedna vrsta pitanja.");
+        } else {
+            $.ajax({
+                url: "admin.php?rt=admin/addQuiz",
+                data: { //šaljemo serveru putem posta informacije za popuniti tablicu "kviz_kvizovi"
+                    kategorija: $("#category").val(),
+                    tipovi: marked
+                },
+                type: "post",
+                dataType: "json",
+                success: function(data) {
+                    alert("Uspješno dodan kviz u bazu! Sad možete dodavati pitanja.");
+                },
+                error: function(xhr, status, errorThrown) {
+                    alert("Nije uspjelo kreiranje kviza!");
+                }
+            });
+        }
     }
 </script>
 <?php
