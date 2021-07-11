@@ -162,32 +162,42 @@ class Service
 
         return $arr;
     }
-	
-	function getScores($username)
+    function getQuizById($id)
     {
         try {
             $db = DB::getConnection();
-            $st = $db->prepare('SELECT * FROM kviz_korisnici WHERE username=:x');
-            $st->execute(array('x' => $username));
+            $st = $db->prepare('SELECT * FROM kviz_korisnici WHERE id=:x');
+            $st->execute(array('x' => $id));
         } catch (PDOException $e) {
             exit('PDO error ' . $e->getMessage());
         }
 
         $row = $st->fetch();
-        $score = new User(
-            $row['id'],
-            $row['is_admin'],
-            $row['username'],
-            $row['password_hash'],
-            $row['email'],
-            $row['registration_sequence'],
-            $row['has_registered'],
-            $row['score_stem'],
-            $row['score_sport'],
-            $row['score_music'],
-            $row['score_film']
-        );
+        if ($row === false)
+            return null;
+        else
+            return new Quiz($row['id'], $row['name'], $row['is_type1'], $row['is_type2'], $row['is_type3']);
+    }
 
-        return $score;
+
+    
+    function addQuestion()
+    {
+      
+    /*    try {
+            $db = DB::getConnection();
+            $st = $db->prepare('');
+            $st->bindParam(1, $category, PDO::PARAM_STR);
+            $st->bindParam(2, $is_type1, PDO::PARAM_STR);
+            $st->bindParam(3, $is_type2, PDO::PARAM_STR);
+            $st->bindParam(4, $is_type3, PDO::PARAM_STR);
+            $st->execute();
+        } catch (PDOException $e) {
+            exit('PDO error ' . $e->getMessage());
+        }
+
+       
+        return true;*/
+        
     }
 };

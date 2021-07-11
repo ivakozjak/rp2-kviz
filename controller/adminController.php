@@ -39,6 +39,28 @@ class AdminController
 
         sendJSONandExit($message);
     }
+    
+    public function createQuestion()
+    {
+        require_once __DIR__ . '/../view/create_question.php';
+    }
+
+
+
+    public function addQuestion()
+    {
+       
+        $service = new Service();
+        $response = $service->addQuestion();
+
+        if ($response) {
+            $message = "Pitanje uspješno dodano u bazu!";
+        } else {
+            $message = "Greška u bazi podataka...";
+        }
+
+        sendJSONandExit($message);
+    }
 };
 
 function sendJSONandExit($message)
