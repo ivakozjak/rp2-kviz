@@ -84,7 +84,33 @@ class Service
         return $arr;
     }
 
-    function addQuiz()
+    function addQuiz($category, $marked)
     {
+        $is_type1 = 0;
+        $is_type2 = 0;
+        $is_type3 = 0;
+        foreach ($marked as $mark) {
+            if ($mark === "is_type1")    $is_type1 = 1;
+            elseif ($mark === "is_type2")    $is_type2 = 1;
+            elseif ($mark === "is_type3")    $is_type3 = 1;
+        }
+        try {
+            $db = DB::getConnection();
+            $st = $db->prepare('INSERT INTO kviz_kvizovi(name, is_type1, is_type2, is_type3) VALUES(?,?,?,?)');
+            $st->bindParam(1, $category, PDO::PARAM_STR);
+            $st->bindParam(2, $is_type1, PDO::PARAM_INT);
+            $st->bindParam(3, $is_type2, PDO::PARAM_INT);
+            $st->bindParam(4, $is_type3, PDO::PARAM_INT);
+            $st->execute();
+        } catch (PDOException $e) {
+            exit('PDO error ' . $e->getMessage());
+        }
+
+        /*$arr = array();
+		while ($row = $st->fetch()) {
+			$arr[] = new Product($row['id'], $row['id_user'], $row['name'], $row['description'], $row['price']);
+		}*/
+        return true;
+        //return $arr;
     }
 };

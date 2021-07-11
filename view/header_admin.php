@@ -5,6 +5,7 @@
     <meta charset="utf8">
     <title>Kviz</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 </head>
 
 <body>

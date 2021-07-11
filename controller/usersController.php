@@ -66,7 +66,7 @@ class UsersController
                 $reg_seq .= chr(rand(0, 25) + ord('a')); // Zalijepi slučajno odabrano slovo
 
             try {
-                $st = $db->prepare('INSERT INTO kviz_korisnici (username, password_hash, email, registration_sequence, has_registered) VALUES (:username, :password, :email, :reg_seq, 0)');
+                $st = $db->prepare('INSERT INTO kviz_korisnici (is_admin, username, password_hash, email, registration_sequence, has_registered) VALUES (0, :username, :password, :email, :reg_seq, 0)');
 
                 $st->execute(array(
                     'username' => $_POST['username'],
