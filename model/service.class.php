@@ -122,7 +122,7 @@ class Service
 
         $arr = array();
         while ($row = $st->fetch()) {
-            $arr[] = new Question($row['id'], $row['id_quiz'],  $row['id_type'], $row['question']);
+            $arr[] = [$row['id'], $row['id_quiz'],  $row['id_type'], $row['question']];
         }
 
         return $arr;
@@ -140,7 +140,7 @@ class Service
 
         $arr = array();
         while ($row = $st->fetch()) {
-            $arr[] = new Answer($row['id'], $row['id_question'], $row['is_true'], $row['answer']);
+            $arr[] = [$row['id'], $row['id_question'], $row['is_true'], $row['answer']];
         }
 
         return $arr;

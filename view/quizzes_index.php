@@ -58,7 +58,6 @@
         },
         method: 'POST',
         success: function(data) {
-          console.log(data);
           questions = data.questions;
           answers = data.answers;
           console.log(questions, answers);
@@ -67,8 +66,6 @@
           alert("Nešto je pošlo po zlu!");
         }
       });
-
-      console.log(questions, answers);
     }
   </script>
 </div>
