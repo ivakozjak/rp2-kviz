@@ -17,5 +17,3 @@
         <li><a href="home.php?rt=users/scores">Rezultati</a></li>
         <li><a href="home.php?rt=users/logout">Odjava</a></li>
     </ul>
-
-    <h2>Odaberi kviz za igru</h2>

@@ -15,7 +15,16 @@ class UsersController
 
     public function scores()
     {
-        echo "tu ćemo imat statistiku";
+        $service = new Service();
+
+        if (isset($_SESSION['login'])) {
+            $allscores = $service->getScores($_SESSION['login']); //nađi rezultate svih kvizova za korisnika
+
+            require_once __DIR__ . '/../view/users_scores.php';
+        } else {
+            header('Location: home.php');
+            exit;
+        }
     }
 
     public function logout()
