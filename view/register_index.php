@@ -20,3 +20,4 @@
             <label><input class="ulogirajse_2" type="submit" value="Registriraj se" name="signup"></label>
         </form>
     </div>
+<?php require_once __DIR__ . '/_footer.php';?>
