@@ -79,7 +79,7 @@ class Service
 
         $arr = array();
         while ($row = $st->fetch()) {
-            $arr[] = new Quiz($row['id'], $row['name'],  $row['is_type1'], $row['is_type1'], $row['is_type2'], $row['is_type3']);
+            $arr[] = new Quiz($row['id'], $row['name'], $row['is_type1'], $row['is_type2'], $row['is_type3']);
         }
 
         return $arr;
