@@ -288,3 +288,22 @@ td {
     
     padding-top: 85px;
 }
+
+.logofaks {
+    padding-top: 10px;
+  float: left;
+  font-size: 13px;
+}
+
+.footer2 {
+    float: left;
+    font-size: 13px;
+}
+
+.footer {
+       left: 0;
+       bottom: 0;
+   width: 100%;
+   color: gray;
+   background color: white;
+}
