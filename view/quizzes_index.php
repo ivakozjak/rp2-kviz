@@ -3,7 +3,7 @@
 <div class="grid-container" id="main_container">
   <?php
   foreach ($quizList as $quiz) {
-    $name = strtolower($quiz->name); //tako je spremljeno u mapi app
+    $name = strtolower($quiz->name); //tako je spremljeno u direktoriju "app"
     $path = dirname($_SERVER['PHP_SELF']);
   ?>
     <div class="maincontainer">

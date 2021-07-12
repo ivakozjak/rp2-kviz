@@ -45,20 +45,20 @@ class AdminController
 
     public function addQuestion()
     {
-
         $service = new Service();
-        $id_quiz = $_POST['id_quiz'];
-        $id_type = $_POST['id_type'];
-        $question = $_POST['question'];
-        $id_question = $_POST['id_question'];
-        $is_true1 = $_POST['is_true1'];
-        $is_true2 = $_POST['is_true2'];
-        $is_true3 = $_POST['is_true3'];
-        $is_true4 = $_POST['is_true4'];
-        $answer1 = $_POST['answer1'];
-        $answer2 = $_POST['answer2'];
-        $answer3 = $_POST['answer3'];
-        $answer4 = $_POST['answer4'];
+        if (isset($_POST['id_quiz']))  $id_quiz = $_POST['id_quiz'];
+        if (isset($_POST['id_type']))    $id_type = $_POST['id_type'];
+        if (isset($_POST['question']))    $question = $_POST['question'];
+        if (isset($_POST['id_question']))    $id_question = $_POST['id_question'];
+        if (isset($_POST['is_true1']))    $is_true1 = $_POST['is_true1'];
+        if (isset($_POST['is_true2']))    $is_true2 = $_POST['is_true2'];
+        if (isset($_POST['is_true3']))    $is_true3 = $_POST['is_true3'];
+        if (isset($_POST['is_true4']))    $is_true4 = $_POST['is_true4'];
+        if (isset($_POST['answer1']))    $answer1 = $_POST['answer1'];
+        if (isset($_POST['answer2']))    $answer2 = $_POST['answer2'];
+        if (isset($_POST['answer3']))    $answer3 = $_POST['answer3'];
+        if (isset($_POST['answer4']))    $answer4 = $_POST['answer4'];
+        if (isset($_POST['answer']))    $answer = $_POST['answer'];
 
         $response1 = $service->addQuestion($id_quiz, $id_type, $question);
 
@@ -76,8 +76,7 @@ class AdminController
                 $is_true4,
                 $answer4
             );
-        }
-        //else if ($id_type === 3) $response2 = $service->addAnswers3();
+        } else if ($id_type == 3) $response2 = $service->addAnswers3($id_question, $answer);
 
 
         if ($response1 && $response2) {

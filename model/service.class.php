@@ -94,7 +94,7 @@ class Service
 
         return $arr;
     }
-    
+
     function getUserId($username)
     {
         try {
@@ -257,7 +257,7 @@ class Service
             $row['kviz12'],
             $row['kviz13'],
             $row['kviz14'],
-            $row['kviz15'] 
+            $row['kviz15']
         );
 
         return $score;
@@ -382,6 +382,20 @@ class Service
             $st4->bindParam(2, $is_true4, PDO::PARAM_INT);
             $st4->bindParam(3, $answer4, PDO::PARAM_STR);
             $st4->execute();
+        } catch (PDOException $e) {
+            exit('PDO error ' . $e->getMessage());
+        }
+        return true;
+    }
+
+    function addAnswers3($id_question, $answer)
+    {
+        try {
+            $db = DB::getConnection();
+            $st1 = $db->prepare('INSERT INTO kviz_odgovori(id_question, is_true, answer) VALUES(?,1,?)');
+            $st1->bindParam(1, $id_question, PDO::PARAM_INT);
+            $st1->bindParam(2, $answer, PDO::PARAM_STR);
+            $st1->execute();
         } catch (PDOException $e) {
             exit('PDO error ' . $e->getMessage());
         }
