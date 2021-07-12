@@ -121,10 +121,12 @@ startQuiz = function() {
       
       btn.click(function() {
         $('.divPitanja').hide();
+
+        console.log($(".welcome").html());
         let rez = 0;
         console.log("kraj");
-        btn.attr("disabled", true);
         
+        console.log(q[i][1]);
         for (let i = 0; i < odgovori.length; i++) {
           for (let j = 0; j < a.length; j++) {
             if(odgovori[i]['broj'] === a[j][1]){
@@ -137,9 +139,17 @@ startQuiz = function() {
         let div = $('<div>');
         div.html("Ukupan rezultat je: " + rez + "/" + q.length);
 
+        let btn = $('<button>');
+        btn.html("Pohrani");
+        div.append(btn);
+        btn.click(function() {
+        console.log($(".welcome").html());
+  
+      });
+
         $('body').append(div);
 
-
+        
 
     });
 
