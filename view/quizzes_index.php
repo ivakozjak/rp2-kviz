@@ -2,6 +2,7 @@
 ?>
 <div class="grid-container" id="main_container">
   <?php
+  $i = 1;
   foreach ($quizList as $quiz) {
     $name = strtolower($quiz->name); //tako je spremljeno u direktoriju "app"
     $path = dirname($_SERVER['PHP_SELF']);
@@ -13,6 +14,7 @@
           if (file_exists('app/' . $name . '.jpg'))
             echo '<img src="' . $path . '/app/' . $name . '.jpg" width="240" height="80" class="image_quiz">' . '<p>' . $quiz->name . '</p>';
           else echo '<br><br><br><br><br><br><p>' . $quiz->name . '</p>';
+          echo "Redni broj kviza: $i";
           ?>
         </div>
         <div class="kartica-back">Tipovi pitanja:
@@ -36,6 +38,7 @@
       </div>
     </div>
   <?php
+    $i++;
   }
   ?>
 </div>

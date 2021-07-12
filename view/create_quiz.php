@@ -43,6 +43,7 @@ require_once __DIR__ . '/header_admin.php';
                 dataType: "json",
                 success: function(data) {
                     alert("Uspješno dodan kviz u bazu! Sad možete dodavati pitanja.");
+                    window.location.replace("admin.php?rt=admin/createQuestion");
                 },
                 error: function(xhr, status, errorThrown) {
                     alert("Nije uspjelo kreiranje kviza!");

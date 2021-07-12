@@ -298,6 +298,32 @@ class Service
         } catch (PDOException $e) {
             exit('PDO error ' . $e->getMessage());
         }
+        if ($id_type == 1) { //u slučaju da u kviz dodajemo tip pitanja koji nije "podržan" u kvizu, ažuriramo tablicu kvizovi t.d. omogućava i taj tip pitanja
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_kvizovi SET is_type1=1 WHERE id=:x');
+                $st->execute(array('x' => $id_quiz));
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+        } else if ($id_type == 2) {
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_kvizovi SET is_type2=1 WHERE id=:x');
+                $st->execute(array('x' => $id_quiz));
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+        } else if ($id_type == 3) {
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_kvizovi SET is_type3=1 WHERE id=:x');
+                $st->execute(array('x' => $id_quiz));
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+        }
+
         return true;
     }
 
