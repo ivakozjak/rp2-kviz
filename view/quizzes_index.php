@@ -46,20 +46,12 @@
   var answers = [];
 
   $(document).ready(function() {
-<<<<<<< Updated upstream
     $(".start_quiz").on("click", startQuiz);
-=======
-    $("#btn_start").on("click", startQuiz);
->>>>>>> Stashed changes
   });
 
   startQuiz = function() {
 
-<<<<<<< Updated upstream
     let quizId = parseInt($(this).val());
-=======
-    let quizId = parseInt($("#btn_start").val());
->>>>>>> Stashed changes
     console.log(quizId);
     $.ajax({
       url: "home.php?rt=quizzes/open",
@@ -71,19 +63,88 @@
         questions = data.questions;
         answers = data.answers;
         console.log(questions, answers);
-        showQuestions(questions);
+        showQuestions(questions,answers);
 
       },
       error: function(xhr, status, errorThrown) {
         alert("Nešto je pošlo po zlu!");
       }
     });
-
-    let showQuestions = function(arr) {
-      $("#main_container").remove();
-      $("body").append("<p>" + arr + "<p>");
-    }
   }
+    let showQuestions = function(q,a) {
+      $("#main_container").remove();
+      
+      
+      $("body").append('<div class = "divPitanja">');
+
+     // $('.div').hide();
+      
+      for (let i = 0; i < q.length; i++) {
+        $(".divPitanja").append("<p class='pom' id = 'pom" + q[i][0] + "'>" + q[i][3] + "</p>");
+        
+        let q_id  = q[i][0];
+        let q_tip = q[i][2];
+        let pom_id = "#pom" + q_id;
+      if(q_tip == 1){
+        
+        
+        let t = $('<button>');
+        let n = $('<button>');
+        t.html("Tocno").val("T");
+        n.html("Netocno").val("N");
+
+        
+        $(pom_id).append(t).append(n);
+        
+
+      }
+      if(q_tip == 2){
+          for (let j = 0; j < a.length; j++) {
+              if(q_id == a[j][1]){
+
+                  let btn = $('<button>');
+
+                  btn.html(a[j][3]);
+                  $(pom_id).append(btn);
+                  }
+                }
+      
+        
+      }
+      if(q_tip == 3){
+       
+        $(pom_id).append('<input type="text" class="odg">');
+        let btn = $('<button>');
+
+        btn.html("Provjeri");
+        $(pom_id).append(btn);
+      }
+
+      if(i == q.length-1){
+      
+        let btn = $('<button>');
+
+        btn.html("End quiz").val('next');
+        $(pom_id).append(btn);
+      }
+      else{
+        
+        let btn = $('<button>');
+
+        btn.html("Next").val('next');
+        $(pom_id).append(btn);
+      }
+
+     
+    }
+
+  
+
+  }
+
+  
+
+  
 </script>
 </body>
 
