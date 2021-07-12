@@ -156,7 +156,7 @@ startQuiz = function() {
           method: 'POST',
           success: function(data) {
             console.log(JSON.stringify(data));
-            if(data.ubacio){
+            if(data['ubacio']){
             let div = $('<div>');
             div.html("Rezultat je dodan");
             $('body').append(div);

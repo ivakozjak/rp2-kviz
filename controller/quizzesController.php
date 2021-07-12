@@ -41,7 +41,7 @@ class QuizzesController
         $result = $_POST['result'];
         $response['ubacio'] = $service->addScore($q, $username, $result );
 
-
+        sendJSONandExit($response);
         
         //require_once __DIR__ . '/../view/quizzes_open.php';
     }
