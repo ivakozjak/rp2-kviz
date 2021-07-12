@@ -43,7 +43,7 @@ class AdminController
         require_once __DIR__ . '/../view/create_question.php';
     }
 
-    public function addQuestion1()
+    public function addQuestion()
     {
 
         $service = new Service();
@@ -51,11 +51,33 @@ class AdminController
         $id_type = $_POST['id_type'];
         $question = $_POST['question'];
         $id_question = $_POST['id_question'];
-        $ans1 = "T";
-        $ans2 = "N";
+        $is_true1 = $_POST['is_true1'];
+        $is_true2 = $_POST['is_true2'];
+        $is_true3 = $_POST['is_true3'];
+        $is_true4 = $_POST['is_true4'];
+        $answer1 = $_POST['answer1'];
+        $answer2 = $_POST['answer2'];
+        $answer3 = $_POST['answer3'];
+        $answer4 = $_POST['answer4'];
 
-        $response1 = $service->addQuestion1($id_quiz, $id_type, $question);
-        $response2 = $service->addAnswers1($ans1, $ans2, $id_question);
+        $response1 = $service->addQuestion($id_quiz, $id_type, $question);
+
+        if ($id_type == 1) {
+            $response2 = $service->addAnswers1("T", "N", $id_question);
+        } else if ($id_type == 2) {
+            $response2 = $service->addAnswers2(
+                $id_question,
+                $is_true1,
+                $answer1,
+                $is_true2,
+                $answer2,
+                $is_true3,
+                $answer3,
+                $is_true4,
+                $answer4
+            );
+        }
+        //else if ($id_type === 3) $response2 = $service->addAnswers3();
 
 
         if ($response1 && $response2) {

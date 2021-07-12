@@ -5,11 +5,10 @@ $(document).ready(function() {
   $(".start_quiz").on("click", startQuiz);
 });
 
-var odgovori = [];
 startQuiz = function() {
 
   let quizId = parseInt($(this).val());
-  //console.log(quizId);
+  console.log(quizId);
   $.ajax({
     url: "home.php?rt=quizzes/open",
     data: {
@@ -19,7 +18,7 @@ startQuiz = function() {
     success: function(data) {
       questions = data.questions;
       answers = data.answers;
-      //console.log(questions, answers);
+      console.log(questions, answers);
       showQuestions(questions,answers);
 
     },
@@ -46,33 +45,14 @@ startQuiz = function() {
       
       $(pom_id).append($('<br>'));
         $(pom_id).append($('<br>'));
-        let t = $('<button>');
-        let n = $('<button>');
+        let t = $('<button id="gumbb">');
+        let n = $('<button id="gumbb">');
         t.html("Točno").val("T");
         n.html("Netočno").val("N");
 
-        t.click(function() {
-          odgovori.push({
-          odgovor: $(this).val(),
-              broj: q_id,
-          });
-          //console.log(odgovori);
-          t.attr("disabled", true);
-          n.attr("disabled", true);
-      });
-      n.click(function() {
-        odgovori.push({
-        odgovor: $(this).val(),
-            broj: q_id,
-        });
-        //console.log(odgovori);
-        t.attr("disabled", true);
-        n.attr("disabled", true);
-    });
+      
       $(pom_id).append(t).append($('<br>')).append(n).append($('<br>'));
       
-        
-     
 
     }
     if(q_tip == 2){
@@ -81,97 +61,45 @@ startQuiz = function() {
         for (let j = 0; j < a.length; j++) {
             if(q_id == a[j][1]){
 
-                let btn = $('<button>');
-                btn.click(function() {
-                  odgovori.push({
-                  odgovor: $(this).html(),
-                      broj: q_id,
-                  });
-                  //console.log(odgovori);
-                  $(pom_id + '> button ').attr("disabled", true);
-                  
-              });
+                let btn = $('<button id="gumbb">');
+
                 btn.html(a[j][3]);
                 $(pom_id).append(btn).append($('<br>'));
                 }
               }
+    
       
     }
     if(q_tip == 3){
         $(pom_id).append($('<br>'));
         $(pom_id).append($('<br>'));
-      $(pom_id).append('<input type="text" id="upisi" class="gumbb">').append($('<br>'));
-      let btn = $('<button>');
-      btn.click(function() {
-        odgovori.push({
-        odgovor: $(pom_id + '> input').val(),
-            broj: q_id,
-        });
-        //console.log(odgovori);
-        btn.attr("disabled", true);
+      $(pom_id).append('<input type="text" id="upisi" class="odg">').append($('<br>'));
+      let btn = $('<button id="gumbb">');
 
-    });
-      btn.html("Unesi odgovor");
-      $(pom_id).append(btn).append($('<br>'));
+      //btn.html("Provjeri");
+      //$(pom_id).append(btn).append($('<br>'));
     }
 
     if(i == q.length-1){
     
       let btn = $('<button id="zavrsava">');
-      
-      btn.click(function() {
-        $('.divPitanja').hide();
 
-        console.log($(".welcome").html());
-        let rez = 0;
-        console.log("kraj");
-        
-        console.log(q[i][1]);
-        for (let i = 0; i < odgovori.length; i++) {
-          for (let j = 0; j < a.length; j++) {
-            if(odgovori[i]['broj'] === a[j][1]){
-              if(odgovori[i]['odgovor'] === a[j][3] && a[j][2] ==='1'){
-                  rez++;
-            }
-          }
-          }
-        }
-        let div = $('<div>');
-        div.html("Ukupan rezultat je: " + rez + "/" + q.length);
-
-        let btn = $('<button>');
-        btn.html("Pohrani");
-        div.append(btn);
-        btn.click(function() {
-        console.log($(".welcome").html());
-  
-      });
-
-        $('body').append(div);
-
-        
-
-    });
-
-      btn.html("Završi kviz");
+      btn.html("Završi kviz").val('next');
       $(pom_id).append(btn);
     }
     else{
       
-      //let btn = $('<button class="provjera1" id="next" onclick="provjeri(event)">');
-      //if(q_tip == 3) btn = $('<button').addClass("provjera").click("provjeri(event)");_
-     // btn.html("Pohrani odgovor").val('next');
-      //$(pom_id).append(btn);
-      //$(pom_id).append($('<br>'));
-      //$(pom_id).append($('<br>'));
+      let btn = $('<button id="next">');
+        if(q_tip == 3) btn = $('<button id="next">');
+      btn.html("Pohrani odgovor").val('next');
+      $(pom_id).append(btn);
+      $(pom_id).append($('<br>'));
+      $(pom_id).append($('<br>'));
     }
+
   }
+
+
 
 }
 
-function provjeri(event){
-    var element = event.currentTarget;
-    if (element.className === "provjera" || element.className === "provjera1") {
-        element.disabled=true;
-  }
-};

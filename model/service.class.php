@@ -31,21 +31,10 @@ class Service
                 $row['email'],
                 $row['registration_sequence'],
                 $row['has_registered'],
-                $row['kviz1'],
-                $row['kviz2'],
-                $row['kviz3'],
-                $row['kviz4'],
-                $row['kviz5'],
-                $row['kviz6'],
-                $row['kviz7'],
-                $row['kviz8'],
-                $row['kviz9'],
-                $row['kviz10'],
-                $row['kviz11'],
-                $row['kviz12'],
-                $row['kviz13'],
-                $row['kviz14'],
-                $row['kviz15']
+                $row['score_stem'],
+                $row['score_sport'],
+                $row['score_music'],
+                $row['score_film']
             );
     }
 
@@ -70,22 +59,10 @@ class Service
                 $row['email'],
                 $row['registration_sequence'],
                 $row['has_registered'],
-                $row['kviz1'],
-                $row['kviz2'],
-                $row['kviz3'],
-                $row['kviz4'],
-                $row['kviz5'],
-                $row['kviz6'],
-                $row['kviz7'],
-                $row['kviz8'],
-                $row['kviz9'],
-                $row['kviz10'],
-                $row['kviz11'],
-                $row['kviz12'],
-                $row['kviz13'],
-                $row['kviz14'],
-                $row['kviz15']
-
+                $row['score_stem'],
+                $row['score_sport'],
+                $row['score_music'],
+                $row['score_film']
             );
         }
 
@@ -205,23 +182,10 @@ class Service
             $row['email'],
             $row['registration_sequence'],
             $row['has_registered'],
-            $row['kviz1'],
-            $row['kviz2'],
-            $row['kviz1'],
-            $row['kviz2'],
-            $row['kviz3'],
-            $row['kviz4'],
-            $row['kviz5'],
-            $row['kviz6'],
-            $row['kviz7'],
-            $row['kviz8'],
-            $row['kviz9'],
-            $row['kviz10'],
-            $row['kviz11'],
-            $row['kviz12'],
-            $row['kviz13'],
-            $row['kviz14'],
-            $row['kviz15']    
+            $row['score_stem'],
+            $row['score_sport'],
+            $row['score_music'],
+            $row['score_film']
         );
 
         return $score;
@@ -244,24 +208,111 @@ class Service
             return new Quiz($row['id'], $row['name'], $row['is_type1'], $row['is_type2'], $row['is_type3']);
     }
 
-
-
-    function addQuestion()
+    function getQuizId($name)
     {
-
-        /*    try {
+        try {
             $db = DB::getConnection();
-            $st = $db->prepare('');
-            $st->bindParam(1, $category, PDO::PARAM_STR);
-            $st->bindParam(2, $is_type1, PDO::PARAM_STR);
-            $st->bindParam(3, $is_type2, PDO::PARAM_STR);
-            $st->bindParam(4, $is_type3, PDO::PARAM_STR);
+            $st = $db->prepare('SELECT id FROM kviz_kvizovi WHERE name=:x');
+            $st->execute(array('x' => $name));
+        } catch (PDOException $e) {
+            exit('PDO error ' . $e->getMessage());
+        }
+
+        $row = $st->fetch();
+        if ($row === false)
+            return null;
+        else
+            return $row['id'];
+    }
+
+    function getLastQuestionId()
+    {
+        try {
+            $db = DB::getConnection();
+            $st = $db->prepare('SELECT count(*) broj FROM kviz_pitanja');
             $st->execute();
         } catch (PDOException $e) {
             exit('PDO error ' . $e->getMessage());
         }
 
-       
-        return true;*/
+        $row = $st->fetch();
+
+        return $row['broj'];
+    }
+
+    function addQuestion($id_quiz, $id_type, $question)
+    {
+        try {
+            $db = DB::getConnection();
+            $st = $db->prepare('INSERT INTO kviz_pitanja(id_quiz, id_type, question) VALUES(?,?,?)');
+            $st->bindParam(1, $id_quiz, PDO::PARAM_INT);
+            $st->bindParam(2, $id_type, PDO::PARAM_INT);
+            $st->bindParam(3, $question, PDO::PARAM_STR);
+            $st->execute();
+        } catch (PDOException $e) {
+            exit('PDO error ' . $e->getMessage());
+        }
+        return true;
+    }
+
+    function addAnswers1($ans1, $ans2, $id_question)
+    {
+        try {
+            $db = DB::getConnection();
+            $st1 = $db->prepare('INSERT INTO kviz_odgovori(id_question, is_true, answer) VALUES(?,1,?)');
+            $st1->bindParam(1, $id_question, PDO::PARAM_INT);
+            $st1->bindParam(2, $ans1, PDO::PARAM_STR);
+            $st1->execute();
+
+            $st2 = $db->prepare('INSERT INTO kviz_odgovori(id_question, is_true, answer) VALUES(?,0,?)');
+            $st2->bindParam(1, $id_question, PDO::PARAM_INT);
+            $st2->bindParam(2, $ans2, PDO::PARAM_STR);
+            $st2->execute();
+        } catch (PDOException $e) {
+            exit('PDO error ' . $e->getMessage());
+        }
+        return true;
+    }
+
+    function addAnswers2(
+        $id_question,
+        $is_true1,
+        $answer1,
+        $is_true2,
+        $answer2,
+        $is_true3,
+        $answer3,
+        $is_true4,
+        $answer4
+    ) {
+        try {
+            $db = DB::getConnection();
+            $st1 = $db->prepare('INSERT INTO kviz_odgovori(id_question, is_true, answer) VALUES(?,?,?)');
+            $st1->bindParam(1, $id_question, PDO::PARAM_INT);
+            $st1->bindParam(2, $is_true1, PDO::PARAM_INT);
+            $st1->bindParam(3, $answer1, PDO::PARAM_STR);
+            $st1->execute();
+
+            $st2 = $db->prepare('INSERT INTO kviz_odgovori(id_question, is_true, answer) VALUES(?,?,?)');
+            $st2->bindParam(1, $id_question, PDO::PARAM_INT);
+            $st2->bindParam(2, $is_true2, PDO::PARAM_INT);
+            $st2->bindParam(3, $answer2, PDO::PARAM_STR);
+            $st2->execute();
+
+            $st3 = $db->prepare('INSERT INTO kviz_odgovori(id_question, is_true, answer) VALUES(?,?,?)');
+            $st3->bindParam(1, $id_question, PDO::PARAM_INT);
+            $st3->bindParam(2, $is_true3, PDO::PARAM_INT);
+            $st3->bindParam(3, $answer3, PDO::PARAM_STR);
+            $st3->execute();
+
+            $st4 = $db->prepare('INSERT INTO kviz_odgovori(id_question, is_true, answer) VALUES(?,?,?)');
+            $st4->bindParam(1, $id_question, PDO::PARAM_INT);
+            $st4->bindParam(2, $is_true4, PDO::PARAM_INT);
+            $st4->bindParam(3, $answer4, PDO::PARAM_STR);
+            $st4->execute();
+        } catch (PDOException $e) {
+            exit('PDO error ' . $e->getMessage());
+        }
+        return true;
     }
 };
