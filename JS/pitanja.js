@@ -46,8 +46,8 @@ startQuiz = function() {
       
       $(pom_id).append($('<br>'));
         $(pom_id).append($('<br>'));
-        let t = $('<button>');
-        let n = $('<button>');
+        let t = $('<button id="gumbb">');
+        let n = $('<button id="gumbb">');
         t.html("Točno").val("T");
         n.html("Netočno").val("N");
 
@@ -81,7 +81,7 @@ startQuiz = function() {
         for (let j = 0; j < a.length; j++) {
             if(q_id == a[j][1]){
 
-                let btn = $('<button>');
+                let btn = $('<button id="gumbb">');
                 btn.click(function() {
                   odgovori.push({
                   odgovor: $(this).html(),
@@ -100,8 +100,8 @@ startQuiz = function() {
     if(q_tip == 3){
         $(pom_id).append($('<br>'));
         $(pom_id).append($('<br>'));
-      $(pom_id).append('<input type="text" id="upisi" class="gumbb">').append($('<br>'));
-      let btn = $('<button>');
+      $(pom_id).append('<input type="text" id="upisi">').append($('<br>'));
+      let btn = $('<button id="gumbb">');
       btn.click(function() {
         odgovori.push({
         odgovor: $(pom_id + '> input').val(),
@@ -139,8 +139,8 @@ startQuiz = function() {
         let div = $('<div>');
         div.html("Ukupan rezultat je: " + rez + "/" + q.length);
 
-        let btn = $('<button>');
-        btn.html("Pohrani");
+        let btn = $('<button id="spremi"></button>');
+        btn.html("SPREMI MOJ REZULTAT! ");
         div.append(btn);
         btn.click(function() {
         console.log($(".welcome").html());

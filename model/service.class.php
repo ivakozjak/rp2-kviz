@@ -94,6 +94,39 @@ class Service
 
         return $arr;
     }
+    
+    function getUserId($username)
+    {
+        try {
+            $db = DB::getConnection();
+            $st = $db->prepare('SELECT id FROM kviz_korisnici WHERE username=:x');
+            $st->execute(array('x' => $username));
+        } catch (PDOException $e) {
+            exit('PDO error ' . $e->getMessage());
+        }
+
+        $row = $st->fetch();
+        if ($row === false)
+            return null;
+        else
+            return $row['id'];
+    }
+
+    function addScore($konkatenirano, $username, $result)
+    {
+        try {
+            $db = DB::getConnection();
+            $st = $db->prepare('UPDATE kviz_korisnici SET konkatenirano=? WHERE username=? ');
+            $st->bindParam(2, $result, PDO::PARAM_INT);
+            $st->bindParam(3, $username, PDO::PARAM_STR);
+            $st->execute();
+        } catch (PDOException $e) {
+            exit('PDO error ' . $e->getMessage());
+        }
+        return true;
+    }
+
+
 
     function getAllQuizzes()
     {

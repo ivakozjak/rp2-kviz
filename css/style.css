@@ -328,7 +328,7 @@ p.pom{
     cursor: pointer;
 }
 
-#zavrsava{
+#zavrsava, #spremi{
     border-radius: 0px;
     width: 100%;
     padding-top: 10px;
@@ -348,6 +348,7 @@ p.pom{
 }
 
 #upisi{
+    width: 40%;
     display: block;
     margin-left: auto;
     margin-right: auto;
