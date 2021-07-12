@@ -301,9 +301,55 @@ td {
  }
 
  .footer {
-        left: 0;
-        bottom: 0;
+    left: 0;
+    bottom: 0;
     width: 100%;
     color: gray;
     background color: white;
  }
+
+p.pom{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    background-color: #bbb;
+  color: black;
+  padding-top: 10px;
+}
+
+#next{
+    border-radius: 0px;
+    border-color: #b44444;
+    color: #b44444;
+    float: right;
+    display: inline-block;
+    padding: 5px 32px;
+    cursor: pointer;
+}
+
+#zavrsava{
+    border-radius: 0px;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-color: #b44444;
+    color: #b44444;
+    cursor: pointer;
+    text-align: center;
+    font-size: 30px;
+}
+
+#gumbb{
+    width: 30%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#upisi{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
