@@ -3,17 +3,20 @@
 <table>
     <tr>
         <?php
-        for ($i = 1; $i < 16; $i++) {
-            $q = 'kviz' . $i;
-            echo '<th>' .  $q . '</th>';
+        $i = 1;
+        foreach ($allscores as $score) {
+            if ($score != NULL) {
+                $q = 'kviz' . $i;
+                echo '<th>' .  $q . '</th>';
+                $i++;
+            }
         }
         ?>
     </tr>
     <?php
     echo '<tr>';
-    for ($i = 1; $i < 16; $i++) {
-        $kviz = 'kviz' . (string)$i;
-        echo '<td>' . $allscores->$kviz . '</td>';
+    foreach ($allscores as $score) {
+        if ($score != NULL)   echo '<td>' . $score . '</td>';
     }
 
     echo '</tr>';

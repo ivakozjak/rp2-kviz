@@ -204,6 +204,7 @@ class Service
 
         return $arr;
     }
+
     function getScores($username)
     {
         try {
@@ -215,30 +216,23 @@ class Service
         }
 
         $row = $st->fetch();
-        $score = new User(
-            $row['id'],
-                $row['is_admin'],
-                $row['username'],
-                $row['password_hash'],
-                $row['email'],
-                $row['registration_sequence'],
-                $row['has_registered'],
-                $row['kviz1'],
-                $row['kviz2'],
-                $row['kviz3'],
-                $row['kviz4'],
-                $row['kviz5'],
-                $row['kviz6'],
-                $row['kviz7'],
-                $row['kviz8'],
-                $row['kviz9'],
-                $row['kviz10'],
-                $row['kviz11'],
-                $row['kviz12'],
-                $row['kviz13'],
-                $row['kviz14'],
-                $row['kviz15']
-        );
+        $score = [
+            $row['kviz1'],
+            $row['kviz2'],
+            $row['kviz3'],
+            $row['kviz4'],
+            $row['kviz5'],
+            $row['kviz6'],
+            $row['kviz7'],
+            $row['kviz8'],
+            $row['kviz9'],
+            $row['kviz10'],
+            $row['kviz11'],
+            $row['kviz12'],
+            $row['kviz13'],
+            $row['kviz14'],
+            $row['kviz15']
+        ];
 
         return $score;
     }
@@ -385,189 +379,186 @@ class Service
 
     function addScore($k, $username, $result)
     {
-        if($k === 'kviz1'){
-        try {
-            $db = DB::getConnection();
-            $st = $db->prepare('UPDATE kviz_korisnici SET kviz1=? WHERE username=? ');
-            $st->bindParam(1, $result, PDO::PARAM_INT);
-            $st->bindParam(2, $username, PDO::PARAM_STR);
-            $st->execute();
-        } catch (PDOException $e) {
-            exit('PDO error ' . $e->getMessage());
+        if ($k === 'kviz1') {
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_korisnici SET kviz1=? WHERE username=? ');
+                $st->bindParam(1, $result, PDO::PARAM_INT);
+                $st->bindParam(2, $username, PDO::PARAM_STR);
+                $st->execute();
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+            return true;
         }
-        return true;
-    }
 
-    if($k === 'kviz2'){
-        try {
-            $db = DB::getConnection();
-            $st = $db->prepare('UPDATE kviz_korisnici SET kviz2=? WHERE username=? ');
-            $st->bindParam(1, $result, PDO::PARAM_INT);
-            $st->bindParam(2, $username, PDO::PARAM_STR);
-            $st->execute();
-        } catch (PDOException $e) {
-            exit('PDO error ' . $e->getMessage());
+        if ($k === 'kviz2') {
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_korisnici SET kviz2=? WHERE username=? ');
+                $st->bindParam(1, $result, PDO::PARAM_INT);
+                $st->bindParam(2, $username, PDO::PARAM_STR);
+                $st->execute();
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+            return true;
         }
-        return true;
-    }
-    if($k === 'kviz3'){
-        try {
-            $db = DB::getConnection();
-            $st = $db->prepare('UPDATE kviz_korisnici SET kviz3=? WHERE username=? ');
-            $st->bindParam(1, $result, PDO::PARAM_INT);
-            $st->bindParam(2, $username, PDO::PARAM_STR);
-            $st->execute();
-        } catch (PDOException $e) {
-            exit('PDO error ' . $e->getMessage());
+        if ($k === 'kviz3') {
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_korisnici SET kviz3=? WHERE username=? ');
+                $st->bindParam(1, $result, PDO::PARAM_INT);
+                $st->bindParam(2, $username, PDO::PARAM_STR);
+                $st->execute();
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+            return true;
         }
-        return true;
-    }
-    if($k === 'kviz4'){
-        try {
-            $db = DB::getConnection();
-            $st = $db->prepare('UPDATE kviz_korisnici SET kviz4=? WHERE username=? ');
-            $st->bindParam(1, $result, PDO::PARAM_INT);
-            $st->bindParam(2, $username, PDO::PARAM_STR);
-            $st->execute();
-        } catch (PDOException $e) {
-            exit('PDO error ' . $e->getMessage());
+        if ($k === 'kviz4') {
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_korisnici SET kviz4=? WHERE username=? ');
+                $st->bindParam(1, $result, PDO::PARAM_INT);
+                $st->bindParam(2, $username, PDO::PARAM_STR);
+                $st->execute();
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+            return true;
         }
-        return true;
-    }
-    if($k === 'kviz5'){
-        try {
-            $db = DB::getConnection();
-            $st = $db->prepare('UPDATE kviz_korisnici SET kviz5=? WHERE username=? ');
-            $st->bindParam(1, $result, PDO::PARAM_INT);
-            $st->bindParam(2, $username, PDO::PARAM_STR);
-            $st->execute();
-        } catch (PDOException $e) {
-            exit('PDO error ' . $e->getMessage());
+        if ($k === 'kviz5') {
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_korisnici SET kviz5=? WHERE username=? ');
+                $st->bindParam(1, $result, PDO::PARAM_INT);
+                $st->bindParam(2, $username, PDO::PARAM_STR);
+                $st->execute();
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+            return true;
         }
-        return true;
-    }
-    if($k === 'kviz6'){
-        try {
-            $db = DB::getConnection();
-            $st = $db->prepare('UPDATE kviz_korisnici SET kviz6=? WHERE username=? ');
-            $st->bindParam(1, $result, PDO::PARAM_INT);
-            $st->bindParam(2, $username, PDO::PARAM_STR);
-            $st->execute();
-        } catch (PDOException $e) {
-            exit('PDO error ' . $e->getMessage());
+        if ($k === 'kviz6') {
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_korisnici SET kviz6=? WHERE username=? ');
+                $st->bindParam(1, $result, PDO::PARAM_INT);
+                $st->bindParam(2, $username, PDO::PARAM_STR);
+                $st->execute();
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+            return true;
         }
-        return true;
-    }
-    if($k === 'kviz7'){
-        try {
-            $db = DB::getConnection();
-            $st = $db->prepare('UPDATE kviz_korisnici SET kviz7=? WHERE username=? ');
-            $st->bindParam(1, $result, PDO::PARAM_INT);
-            $st->bindParam(2, $username, PDO::PARAM_STR);
-            $st->execute();
-        } catch (PDOException $e) {
-            exit('PDO error ' . $e->getMessage());
+        if ($k === 'kviz7') {
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_korisnici SET kviz7=? WHERE username=? ');
+                $st->bindParam(1, $result, PDO::PARAM_INT);
+                $st->bindParam(2, $username, PDO::PARAM_STR);
+                $st->execute();
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+            return true;
         }
-        return true;
-    }
-    if($k === 'kviz8'){
-        try {
-            $db = DB::getConnection();
-            $st = $db->prepare('UPDATE kviz_korisnici SET kviz8=? WHERE username=? ');
-            $st->bindParam(1, $result, PDO::PARAM_INT);
-            $st->bindParam(2, $username, PDO::PARAM_STR);
-            $st->execute();
-        } catch (PDOException $e) {
-            exit('PDO error ' . $e->getMessage());
+        if ($k === 'kviz8') {
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_korisnici SET kviz8=? WHERE username=? ');
+                $st->bindParam(1, $result, PDO::PARAM_INT);
+                $st->bindParam(2, $username, PDO::PARAM_STR);
+                $st->execute();
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+            return true;
         }
-        return true;
-    }
-    if($k === 'kviz9'){
-        try {
-            $db = DB::getConnection();
-            $st = $db->prepare('UPDATE kviz_korisnici SET kviz9=? WHERE username=? ');
-            $st->bindParam(1, $result, PDO::PARAM_INT);
-            $st->bindParam(2, $username, PDO::PARAM_STR);
-            $st->execute();
-        } catch (PDOException $e) {
-            exit('PDO error ' . $e->getMessage());
+        if ($k === 'kviz9') {
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_korisnici SET kviz9=? WHERE username=? ');
+                $st->bindParam(1, $result, PDO::PARAM_INT);
+                $st->bindParam(2, $username, PDO::PARAM_STR);
+                $st->execute();
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+            return true;
         }
-        return true;
-    }
-    if($k === 'kviz10'){
-        try {
-            $db = DB::getConnection();
-            $st = $db->prepare('UPDATE kviz_korisnici SET kviz10=? WHERE username=? ');
-            $st->bindParam(1, $result, PDO::PARAM_INT);
-            $st->bindParam(2, $username, PDO::PARAM_STR);
-            $st->execute();
-        } catch (PDOException $e) {
-            exit('PDO error ' . $e->getMessage());
+        if ($k === 'kviz10') {
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_korisnici SET kviz10=? WHERE username=? ');
+                $st->bindParam(1, $result, PDO::PARAM_INT);
+                $st->bindParam(2, $username, PDO::PARAM_STR);
+                $st->execute();
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+            return true;
         }
-        return true;
-    }
-    if($k === 'kviz11'){
-        try {
-            $db = DB::getConnection();
-            $st = $db->prepare('UPDATE kviz_korisnici SET kviz11=? WHERE username=? ');
-            $st->bindParam(1, $result, PDO::PARAM_INT);
-            $st->bindParam(2, $username, PDO::PARAM_STR);
-            $st->execute();
-        } catch (PDOException $e) {
-            exit('PDO error ' . $e->getMessage());
+        if ($k === 'kviz11') {
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_korisnici SET kviz11=? WHERE username=? ');
+                $st->bindParam(1, $result, PDO::PARAM_INT);
+                $st->bindParam(2, $username, PDO::PARAM_STR);
+                $st->execute();
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+            return true;
         }
-        return true;
-    }
-    if($k === 'kviz12'){
-        try {
-            $db = DB::getConnection();
-            $st = $db->prepare('UPDATE kviz_korisnici SET kviz12=? WHERE username=? ');
-            $st->bindParam(1, $result, PDO::PARAM_INT);
-            $st->bindParam(2, $username, PDO::PARAM_STR);
-            $st->execute();
-        } catch (PDOException $e) {
-            exit('PDO error ' . $e->getMessage());
+        if ($k === 'kviz12') {
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_korisnici SET kviz12=? WHERE username=? ');
+                $st->bindParam(1, $result, PDO::PARAM_INT);
+                $st->bindParam(2, $username, PDO::PARAM_STR);
+                $st->execute();
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+            return true;
         }
-        return true;
-    }
-    if($k === 'kviz13'){
-        try {
-            $db = DB::getConnection();
-            $st = $db->prepare('UPDATE kviz_korisnici SET kviz13=? WHERE username=? ');
-            $st->bindParam(1, $result, PDO::PARAM_INT);
-            $st->bindParam(2, $username, PDO::PARAM_STR);
-            $st->execute();
-        } catch (PDOException $e) {
-            exit('PDO error ' . $e->getMessage());
+        if ($k === 'kviz13') {
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_korisnici SET kviz13=? WHERE username=? ');
+                $st->bindParam(1, $result, PDO::PARAM_INT);
+                $st->bindParam(2, $username, PDO::PARAM_STR);
+                $st->execute();
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+            return true;
         }
-        return true;
-    }
-    if($k === 'kviz14'){
-        try {
-            $db = DB::getConnection();
-            $st = $db->prepare('UPDATE kviz_korisnici SET kviz14=? WHERE username=? ');
-            $st->bindParam(1, $result, PDO::PARAM_INT);
-            $st->bindParam(2, $username, PDO::PARAM_STR);
-            $st->execute();
-        } catch (PDOException $e) {
-            exit('PDO error ' . $e->getMessage());
+        if ($k === 'kviz14') {
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_korisnici SET kviz14=? WHERE username=? ');
+                $st->bindParam(1, $result, PDO::PARAM_INT);
+                $st->bindParam(2, $username, PDO::PARAM_STR);
+                $st->execute();
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+            return true;
         }
-        return true;
-    }
-    if($k === 'kviz15'){
-        try {
-            $db = DB::getConnection();
-            $st = $db->prepare('UPDATE kviz_korisnici SET kviz15=? WHERE username=? ');
-            $st->bindParam(1, $result, PDO::PARAM_INT);
-            $st->bindParam(2, $username, PDO::PARAM_STR);
-            $st->execute();
-        } catch (PDOException $e) {
-            exit('PDO error ' . $e->getMessage());
+        if ($k === 'kviz15') {
+            try {
+                $db = DB::getConnection();
+                $st = $db->prepare('UPDATE kviz_korisnici SET kviz15=? WHERE username=? ');
+                $st->bindParam(1, $result, PDO::PARAM_INT);
+                $st->bindParam(2, $username, PDO::PARAM_STR);
+                $st->execute();
+            } catch (PDOException $e) {
+                exit('PDO error ' . $e->getMessage());
+            }
+            return true;
         }
-        return true;
     }
-    
-    }
-
-
 };
