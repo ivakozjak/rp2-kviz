@@ -46,12 +46,20 @@
   var answers = [];
 
   $(document).ready(function() {
+<<<<<<< Updated upstream
     $(".start_quiz").on("click", startQuiz);
+=======
+    $("#btn_start").on("click", startQuiz);
+>>>>>>> Stashed changes
   });
 
   startQuiz = function() {
 
+<<<<<<< Updated upstream
     let quizId = parseInt($(this).val());
+=======
+    let quizId = parseInt($("#btn_start").val());
+>>>>>>> Stashed changes
     console.log(quizId);
     $.ajax({
       url: "home.php?rt=quizzes/open",

@@ -21,8 +21,6 @@ class AdminController
         require_once __DIR__ . '/../view/create_quiz.php';
     }
 
-
-
     public function addQuiz()
     {
         $category = strtoupper($_POST['kategorija']);
@@ -39,17 +37,15 @@ class AdminController
 
         sendJSONandExit($message);
     }
-    
+
     public function createQuestion()
     {
         require_once __DIR__ . '/../view/create_question.php';
     }
 
-
-
     public function addQuestion()
     {
-       
+
         $service = new Service();
         $response = $service->addQuestion();
 

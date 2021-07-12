@@ -21,7 +21,7 @@
       </div>
       <div class="kartica-back">
         <br><br><br><br><br><br>
-        <form class="forma" method="post" action="admin.php?rt=admin/addQuestion">
+        <form class="forma" method="post" action="admin.php?rt=admin/createQuestion">
           <label><button class="dodaj" type="submit">Dodaj nova pitanja u postojeći kviz</button></label>
         </form>
       </div>
