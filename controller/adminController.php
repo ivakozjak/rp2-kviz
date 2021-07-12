@@ -72,7 +72,8 @@ class AdminController
         $service = new Service();
         $name = strtoupper($_GET['name']);
         $response = $service->getQuizId($name);
-        sendJSONandExit($response);
+        if ($response)   sendJSONandExit($response);
+        else    sendJSONandExit(0);
     }
 
     public function getLastQuestionId()
