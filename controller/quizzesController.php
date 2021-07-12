@@ -36,11 +36,11 @@ class QuizzesController
         //$questions = Service::getAllQuestions($_POST['quizId']);
         $service = new Service();
         $quizId = (int)$_POST['quiz_id'];
+        $q = 'kviz' . $quizId;
         $username = $_POST['username'];
+        $result = $_POST['result'];
+        $response['ubacio'] = $service->addScore($q, $username, $result );
 
-
-        $questions = $service->getAllQuestions($quizId);
-        $answers = $service->getAllAnswers();
 
         
         //require_once __DIR__ . '/../view/quizzes_open.php';

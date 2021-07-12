@@ -81,14 +81,14 @@ startQuiz = function() {
         for (let j = 0; j < a.length; j++) {
             if(q_id == a[j][1]){
 
-                let btn = $('<button id="gumbb">');
+                let btn = $('<button id="gumbb" class="gumbb">');
                 btn.click(function() {
                   odgovori.push({
                   odgovor: $(this).html(),
                       broj: q_id,
                   });
                   //console.log(odgovori);
-                  $(pom_id + '> button ').attr("disabled", true);
+                  $(pom_id + '> button.gumbb').attr("disabled", true);
                   
               });
                 btn.html(a[j][3]);
@@ -118,7 +118,7 @@ startQuiz = function() {
     if(i == q.length-1){
     
       let btn = $('<button id="zavrsava">');
-      
+  
       btn.click(function() {
         $('.divPitanja').hide();
 
@@ -143,21 +143,24 @@ startQuiz = function() {
         btn.html("SPREMI MOJ REZULTAT! ");
         div.append(btn);
         btn.click(function() {
-        console.log($(".welcome").html());
+        //console.log($(".welcome").html());
 
         $.ajax({
           url: "home.php?rt=quizzes/saveResult",
           data: {
             quiz_id: q[0][1],
-            username: $(".welcome").html()
+            username: $(".welcome").html(),
+            result: rez
 
           },
           method: 'POST',
           success: function(data) {
-            
+            console.log(JSON.stringify(data));
+            if(data.ubacio){
             let div = $('<div>');
             div.html("Rezultat je dodan");
             $('body').append(div);
+            }
       
           },
           error: function(xhr, status, errorThrown) {
