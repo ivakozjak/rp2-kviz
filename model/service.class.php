@@ -31,10 +31,23 @@ class Service
                 $row['email'],
                 $row['registration_sequence'],
                 $row['has_registered'],
-                $row['score_stem'],
-                $row['score_sport'],
-                $row['score_music'],
-                $row['score_film']
+                $row['kviz1'],
+                $row['kviz2'],
+                $row['kviz1'],
+                $row['kviz2'],
+                $row['kviz3'],
+                $row['kviz4'],
+                $row['kviz5'],
+                $row['kviz6'],
+                $row['kviz7'],
+                $row['kviz8'],
+                $row['kviz9'],
+                $row['kviz10'],
+                $row['kviz11'],
+                $row['kviz12'],
+                $row['kviz13'],
+                $row['kviz14'],
+                $row['kviz15']
             );
     }
 
@@ -59,10 +72,23 @@ class Service
                 $row['email'],
                 $row['registration_sequence'],
                 $row['has_registered'],
-                $row['score_stem'],
-                $row['score_sport'],
-                $row['score_music'],
-                $row['score_film']
+                $row['kviz1'],
+                $row['kviz2'],
+                $row['kviz1'],
+                $row['kviz2'],
+                $row['kviz3'],
+                $row['kviz4'],
+                $row['kviz5'],
+                $row['kviz6'],
+                $row['kviz7'],
+                $row['kviz8'],
+                $row['kviz9'],
+                $row['kviz10'],
+                $row['kviz11'],
+                $row['kviz12'],
+                $row['kviz13'],
+                $row['kviz14'],
+                $row['kviz15']
             );
         }
 
@@ -182,10 +208,23 @@ class Service
             $row['email'],
             $row['registration_sequence'],
             $row['has_registered'],
-            $row['score_stem'],
-            $row['score_sport'],
-            $row['score_music'],
-            $row['score_film']
+            $row['kviz1'],
+            $row['kviz2'],
+            $row['kviz1'],
+            $row['kviz2'],
+            $row['kviz3'],
+            $row['kviz4'],
+            $row['kviz5'],
+            $row['kviz6'],
+            $row['kviz7'],
+            $row['kviz8'],
+            $row['kviz9'],
+            $row['kviz10'],
+            $row['kviz11'],
+            $row['kviz12'],
+            $row['kviz13'],
+            $row['kviz14'],
+            $row['kviz15'] 
         );
 
         return $score;

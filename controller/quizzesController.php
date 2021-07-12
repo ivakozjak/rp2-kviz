@@ -30,6 +30,21 @@ class QuizzesController
         sendJSONandExit($response);
         //require_once __DIR__ . '/../view/quizzes_open.php';
     }
+
+    public function saveResult()
+    {
+        //$questions = Service::getAllQuestions($_POST['quizId']);
+        $service = new Service();
+        $quizId = (int)$_POST['quiz_id'];
+        $username = $_POST['username'];
+
+
+        $questions = $service->getAllQuestions($quizId);
+        $answers = $service->getAllAnswers();
+
+        
+        //require_once __DIR__ . '/../view/quizzes_open.php';
+    }
 };
 
 function sendJSONandExit($message)
