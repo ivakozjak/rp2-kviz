@@ -51,10 +51,21 @@ function create_table_korisnici()
 			'email varchar(50) NOT NULL,' .
 			'registration_sequence varchar(20) NOT NULL,' .
 			'has_registered int,' .
-            'score_stem int,' .
-            'score_sport int,' .
-            'score_music int,' .
-            'score_film int )'
+            'kviz1 int,' .
+            'kviz2 int,' .
+            'kviz3 int,' .
+            'kviz4 int,' .
+            'kviz5 int,' .
+            'kviz6 int,' .
+            'kviz7 int,' .
+            'kviz8 int,' .
+            'kviz9 int,' .
+            'kviz10 int,' .
+            'kviz11 int,' .
+            'kviz12 int,' .
+            'kviz13 int,' .
+            'kviz14 int,' .
+            'kviz15 int )'
 		);
 
 		$st->execute();
