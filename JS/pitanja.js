@@ -158,7 +158,7 @@ startQuiz = function() {
             console.log(JSON.stringify(data));
             if(data['ubacio']){
             alert('Rezultat je dodan!');
-            window.location.replace("admin.php?rt=quizzes");
+            window.location.replace("home.php?rt=quizzes");
             }
       
           },
