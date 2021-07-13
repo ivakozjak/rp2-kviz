@@ -4,12 +4,12 @@ require_once __DIR__ . '/../model/service.class.php';
 
 class QuizzesController
 {
-    public function index()
+    public function index() //prikaz početne stranice
     {
         $service = new Service();
 
         //$title = 'Quiz list';
-        $quizList = $service->getAllQuizzes();
+        $quizList = $service->getAllQuizzes(); //fja iz service.class.php koja daje popis svih kvizova u bazi
 
         require_once __DIR__ . '/../view/quizzes_index.php';
     }
@@ -39,10 +39,10 @@ class QuizzesController
         $q = 'kviz' . $quizId;
         $username = $_POST['username'];
         $result = $_POST['result'];
-        $response['ubacio'] = $service->addScore($q, $username, $result );
+        $response['ubacio'] = $service->addScore($q, $username, $result);
 
         sendJSONandExit($response);
-        
+
         //require_once __DIR__ . '/../view/quizzes_open.php';
     }
 };

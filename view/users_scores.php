@@ -4,25 +4,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
 <script>
+    var xyValues = [];
     <?php
-
-
-    /* foreach ($allscores as $score) {
-        if ($score != NULL) {
-            $q = 'kviz' . $i;
-            echo "var kviz$i=$q"; // var kviz1='kviz1', ...
-            echo "var score$i=$score"; //npr. var score1=10, ...
-            $i++;
-        } else $i++;
-    }*/
-    echo "var xyValues =[];";
     $i = 1;
     foreach ($allscores as $score) {
-
-        if ($score != NULL) {
-            //$q = 'kviz' . $i;
-            echo "var kviz$i=$i;";
-            echo "console.log($i);";
+        if ($score != NULL) { //spremi rezultate riješenih kvizova za korisnika
+            //echo "console.log($i);";
             echo "xyValues.push({x:$i, y:$score});";
             $i++;
         } else $i++;

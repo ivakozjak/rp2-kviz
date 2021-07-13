@@ -3,12 +3,12 @@ require_once __DIR__ . '/../model/service.class.php';
 
 class AdminController
 {
-    public function index()
+    public function index() //prikaz početne stranice
     {
         require_once __DIR__ . '/../view/admin_index.php';
     }
 
-    public function logout()
+    public function logout() //odjavljivanje admina
     {
         session_unset();
         session_destroy();
@@ -16,18 +16,18 @@ class AdminController
         header('Location: home.php');
     }
 
-    public function createQuiz()
+    public function createQuiz() //prikaz viewa za dodavanje kviza
     {
         require_once __DIR__ . '/../view/create_quiz.php';
     }
 
     public function addQuiz()
     {
-        $category = strtoupper($_POST['kategorija']);
+        $category = strtoupper($_POST['kategorija']); //pohrani info iz posta, ovdje je to kategorija kviza
         $marked = $_POST['tipovi'];
 
         $service = new Service();
-        $response = $service->addQuiz($category, $marked);
+        $response = $service->addQuiz($category, $marked); //fja iz service.class.php koja ubacuje kviz u bazu
 
         if ($response) {
             $message = "Kviz uspješno dodan u bazu!";
@@ -38,12 +38,12 @@ class AdminController
         sendJSONandExit($message);
     }
 
-    public function createQuestion()
+    public function createQuestion() //prikaz viewa za dodavanje pitanja
     {
         require_once __DIR__ . '/../view/create_question.php';
     }
 
-    public function addQuestion()
+    public function addQuestion() //pohranjuje podatke iz posta i poziva fje iz service.class.php za pohranu pitanja i odgovora
     {
         $service = new Service();
         if (isset($_POST['id_quiz']))  $id_quiz = $_POST['id_quiz'];
@@ -60,10 +60,10 @@ class AdminController
         if (isset($_POST['answer4']))    $answer4 = $_POST['answer4'];
         if (isset($_POST['answer']))    $answer = $_POST['answer'];
 
-        $response1 = $service->addQuestion($id_quiz, $id_type, $question);
+        $response1 = $service->addQuestion($id_quiz, $id_type, $question); //poziva fju za dodavanje pitanja u bazu
 
-        if ($id_type == 1) {
-            $response2 = $service->addAnswers1("T", "N", $id_question);
+        if ($id_type == 1) { //ovisno o tipu pitanja, drugačiji su i odgovori koji se spremaju u bazu
+            $response2 = $service->addAnswers1("T", "N", $id_question); //poziva fju iz service.class.php za dodavanje odgovora prvog tipa
         } else if ($id_type == 2) {
             $response2 = $service->addAnswers2(
                 $id_question,
@@ -85,10 +85,10 @@ class AdminController
             $message = "Greška prilikom dodavanja...";
         }
 
-        sendJSONandExit($message);
+        sendJSONandExit($message); //vraća ajax odgovor u json formatu
     }
 
-    public function getQuizId()
+    public function getQuizId() //poziva fju iz service.class.php za dobivanje ID kviza (ovisno u nazivu kviza)
     {
         $service = new Service();
         $name = strtoupper($_GET['name']);
@@ -97,7 +97,7 @@ class AdminController
         else    sendJSONandExit(0);
     }
 
-    public function getLastQuestionId()
+    public function getLastQuestionId() //poziva fju iz service.class.php za dobivanje ukupnog broja pitanja u bazi (id=1,2,...,n)
     {
         $service = new Service();
         $response = $service->getLastQuestionId();

@@ -4,7 +4,7 @@ define('__SITE_URL', dirname($_SERVER['PHP_SELF']));
 session_start();
 require_once __DIR__ . '/model/service.class.php';
 
-function validate($us, $pass)
+function validate($us, $pass) //provjera unesenih podataka kod ulogiranja
 {
     $service = new Service();
     $userList = $service->getAllUsers();
@@ -18,7 +18,7 @@ function validate($us, $pass)
     return false;
 }
 
-function hasRegistered($us)
+function hasRegistered($us) //provjerava je li korisnik registriran
 {
     $service = new Service();
     $userList = $service->getAllUsers();

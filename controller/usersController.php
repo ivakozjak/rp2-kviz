@@ -27,7 +27,7 @@ class UsersController
         }
     }
 
-    public function logout()
+    public function logout()  //odjava korisnika
     {
         session_unset();
         session_destroy();
@@ -35,7 +35,7 @@ class UsersController
         header('Location: home.php');
     }
 
-    public function signUp()
+    public function signUp() //registracija novog korisnika
     {
         if (!isset($_POST['username']) || !isset($_POST['password']) || !isset($_POST['email'])) {
             echo 'Unesi ime, lozinku i email.';

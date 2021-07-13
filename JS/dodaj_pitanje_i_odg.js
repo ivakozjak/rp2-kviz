@@ -1,12 +1,12 @@
 var question = "";
-var question_type = "";
+var question_type = ""; //jedan od 3 definirana tipa
 var category = "";
 var quiz_id = 0;
-var last_question_id = 0;
-var is_it_true1 = 0;
-var is_it_true2 = 0;
-var is_it_true3 = 0;
-var is_it_true4 = 0;
+var last_question_id = 0; //zadnje pitanje u tablici pitanja
+var is_it_true1 = 0; //označava da je prvi od 4 odgovora unesenih u formi po defaultu krivi
+var is_it_true2 = 0; //analogno
+var is_it_true3 = 0; //analogno
+var is_it_true4 = 0; //analogno
 
 $(document).ready(function () {
     $("#btn_potvrdi").on("click", potvrdi);
@@ -18,13 +18,13 @@ let potvrdi = function () { //za hendlanje pitanja
     category = $("#kviz").val();
 
     console.log(question, question_type, category);
-    if (question != "" && category != "") { //dodaj odgovarajuću formu za unos odgovora ovisno o tipu pitanja
+    if (question != "" && category != "") { //dodaj odgovarajuću formu za unos odgovora ovisno o tipu pitanja, ako je uneseno pitanje i kategorija
         if (question_type === "id_type1") {
             $("#pitanja").remove();
             $("body").append('<div id="' +
                 'tip1"' + '><label>Odgovor 1:<p id="odgovor1">T</p></label><label>Odgovor 2:<p id="odgovor2">N</p></label><label><button class="ulogirajse"' + 'type = "submit"' + 'name="submit"' + 'value="Dodaj"' +
                 'id="btn_dodaj1">Dodaj</button></label></div>');
-            $("#btn_dodaj1").on("click", getQuizId);
+            $("#btn_dodaj1").on("click", getQuizId); //prva fja u postupku dodavanja u bazu, prvo daje id kviza
         } else if (question_type === "id_type2") {
             $("#pitanja").remove();
             $("body").append('<div id="' +
@@ -53,7 +53,7 @@ let potvrdi = function () { //za hendlanje pitanja
 
 let pošalji_tip1 = function () {
     $.ajax({
-        url: "admin.php?rt=admin/addQuestion",
+        url: "admin.php?rt=admin/addQuestion", //ruta kontrolera
         data: { //šaljemo serveru putem posta informacije za popuniti tablice kviz_pitanja i kviz_odgovori
             id_quiz: quiz_id,
             id_type: question_type,
@@ -81,7 +81,7 @@ let pošalji_tip2 = function () {
     else if (točan_odg === 4) is_it_true4 = 1;
 
     $.ajax({
-        url: "admin.php?rt=admin/addQuestion",
+        url: "admin.php?rt=admin/addQuestion", //ruta kontrolera
         data: { //šaljemo serveru putem posta informacije za popuniti tablice kviz_pitanja i kviz_odgovori
             id_quiz: quiz_id,
             id_type: question_type,
@@ -140,7 +140,7 @@ let pošalji_tip3 = function () {
 let getQuizId = function () {//prvo dohvati id kviza za kojeg se dodaje pitanje i odgovori
     $.ajax({
         url: "admin.php?rt=admin/getQuizId", //ruta kontrolera
-        data: { //šaljemo serveru putem posta informacije za popuniti tablicu kviz_pitanja i kviz_odgovori
+        data: { 
             name: category
         },
         type: "get",
@@ -159,7 +159,7 @@ let getQuizId = function () {//prvo dohvati id kviza za kojeg se dodaje pitanje 
     });
 }
 
-let getLastQuestionId = function () {//dohvaća id zadnjeg pitanja u tablici kviz_pitanja i šalje kontroleru odgovore, ovisno o tipu pitanja
+let getLastQuestionId = function () {
     $.ajax({
         url: "admin.php?rt=admin/getLastQuestionId",
         type: "get",
@@ -178,14 +178,16 @@ let getLastQuestionId = function () {//dohvaća id zadnjeg pitanja u tablici kvi
                 } else if (isNaN(parseInt($("#točan_odg").val()))) {
                     alert("Točan odgovor treba biti broj!");
                     window.location.replace("admin.php?rt=admin/createQuestion");
-                } else {
+                } 
+                else if (parseInt($("#točan_odg").val()) > 4 || parseInt($("#točan_odg").val()) < 1){
+                    alert("Točan odgovor treba biti u rasponu od 1 do 4!");
+                    window.location.replace("admin.php?rt=admin/createQuestion");
+                }else {
                     pošalji_tip2();
                 }
 
-            } else if (question_type === "id_type3") {
-                console.log("question_type: ", question_type)
-                question_type = 3;
-                console.log("question_type: ", question_type)
+            } else if (question_type === "id_type3") {               
+                question_type = 3;              
                 if ($("#only_answer").val() == "") {
                     alert("Nije unesen odgovor!");
                     window.location.replace("admin.php?rt=admin/createQuestion");
