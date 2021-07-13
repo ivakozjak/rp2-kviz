@@ -354,7 +354,7 @@ p.pom{
     margin-right: auto;
 }
 
-#kvizovi, #pitanja{
+#kvizovi, #pitanja, #tip1, #tip2, #tip3{
     position: relative;
     justify-content: center;
     display: block;
@@ -367,14 +367,14 @@ p.pom{
   padding-left: 90px;
 }
 
-#btn_dodaj, #btn_potvrdi{
+#btn_dodaj, #btn_potvrdi, #btn_dodaj2{
     font-size: 20px;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-#btn_potvrdi:hover, #btn_dodaj:hover{
+#btn_potvrdi:hover, #btn_dodaj:hover, #btn_dodaj2:hover{
     color: #b44444;
     text-decoration-thickness: 2px;
 }

@@ -17,20 +17,20 @@
           echo "Redni broj kviza: $i";
           ?>
         </div>
-        <div class="kartica-back">Tipovi pitanja:
+        <div class="kartica-back"><br><b>Tipovi pitanja:</b><br><br>
 
           <?php
           if ($quiz->is_type1 === '1') {
-            echo "Tocno/Netocno";
-            echo "<br>";
+            echo "Točno/Netočno";
+            echo "<br><br>";
           }
           if ($quiz->is_type2 === '1') {
             echo "Odaberi";
-            echo "<br>";
+            echo "<br><br>";
           }
           if ($quiz->is_type3 === '1') {
             echo "Popuni";
-            echo "<br>";
+            echo "<br><br>";
           }
           ?>
           <button class="start_quiz" type="submit" name="submit" value="<?php echo $quiz->id; ?>">Odaberi</button>
