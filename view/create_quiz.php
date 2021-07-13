@@ -1,16 +1,17 @@
 <?php
 require_once __DIR__ . '/header_admin.php';
 ?>
-<div>
+<div id="kvizovi">
     <label>Kategorija <input type="text" id="category" name="category"></label>
-    <p>Tipovi pitanja </p>
+    <br>
+    <p><b>Tipovi pitanja</b> </p>
     <input type="checkbox" id="type1" name="types[]" value="is_type1">
     <label for="type1"> Točno/netočno</label><br>
     <input type="checkbox" id="type2" name="types[]" value="is_type2">
     <label for="type2"> Odaberi odgovor</label><br>
     <input type="checkbox" id="type3" name="types[]" value="is_type3">
     <label for="type3"> Upiši odgovor</label><br>
-    <label><button class="ulogirajse" type="submit" name="submit" value="Dodaj" id="btn_dodaj">Dodaj</button></label>
+    <label><button type="submit" name="submit" value="Dodaj" id="btn_dodaj">Dodaj</button></label>
 </div>
 
 <script>
@@ -21,7 +22,7 @@ require_once __DIR__ . '/header_admin.php';
     sendQuizData = function() {
         let marked = []; //označene vrijednosti u checkboxu
 
-        $("input:checked").each(function() { //u polje "marked" ubaci označene tipove 
+        $("input:checked").each(function() { //u polje "marked" ubaci označene tipove
             marked.push($(this).val());
         });
 

@@ -354,3 +354,27 @@ p.pom{
     margin-right: auto;
 }
 
+#kvizovi, #pitanja{
+    position: relative;
+    justify-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    background-color: #bbb;
+  color: black;
+  padding-top: 10px;
+  padding-left: 90px;
+}
+
+#btn_dodaj, #btn_potvrdi{
+    font-size: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#btn_potvrdi:hover, #btn_dodaj:hover{
+    color: #b44444;
+    text-decoration-thickness: 2px;
+}
