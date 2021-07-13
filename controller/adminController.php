@@ -63,7 +63,11 @@ class AdminController
         $response1 = $service->addQuestion($id_quiz, $id_type, $question); //poziva fju za dodavanje pitanja u bazu
 
         if ($id_type == 1) { //ovisno o tipu pitanja, drugačiji su i odgovori koji se spremaju u bazu
-            $response2 = $service->addAnswers1("T", "N", $id_question); //poziva fju iz service.class.php za dodavanje odgovora prvog tipa
+            if ($answer == "T") {
+                $response2 = $service->addAnswers1("T", "N", $id_question); //poziva fju iz service.class.php za dodavanje odgovora prvog tipa
+            } else {
+                $response2 = $service->addAnswers1("N", "T", $id_question);
+            }
         } else if ($id_type == 2) {
             $response2 = $service->addAnswers2(
                 $id_question,

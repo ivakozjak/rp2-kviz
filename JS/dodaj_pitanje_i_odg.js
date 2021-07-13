@@ -22,7 +22,7 @@ let potvrdi = function () { //za hendlanje pitanja
         if (question_type === "id_type1") {
             $("#pitanja").remove();
             $("body").append('<div id="' +
-                'tip1"' + '><label>Odgovor 1:<p id="odgovor1">T</p></label><label>Odgovor 2:<p id="odgovor2">N</p></label><label><button class="ulogirajse"' + 'type = "submit"' + 'name="submit"' + 'value="Dodaj"' +
+                'tip1"' + '><label>Unesite "T" ili "N" za točnost/netočnost.<input type="text" id="tocnost" name="tocnost"></label><label><button class="ulogirajse"' + 'type = "submit"' + 'name="submit"' + 'value="Dodaj"' +
                 'id="btn_dodaj1">Dodaj</button></label></div>');
             $("#btn_dodaj1").on("click", getQuizId); //prva fja u postupku dodavanja u bazu, prvo daje id kviza
         } else if (question_type === "id_type2") {
@@ -58,7 +58,8 @@ let pošalji_tip1 = function () {
             id_quiz: quiz_id,
             id_type: question_type,
             question: question,
-            id_question: last_question_id + 1
+            id_question: last_question_id + 1,
+            answer: $("#tocnost").val()
         },
         type: "post",
         dataType: "json",
@@ -167,8 +168,13 @@ let getLastQuestionId = function () {
         success: function (data) {
             last_question_id = parseInt(data);
             if (question_type === "id_type1") {
-                question_type = 1;
-                pošalji_tip1();
+                if($("#tocnost").val() == "" || ($("#tocnost").val() != "T" && $("#tocnost").val() != "N")){
+                    alert("Neispravan unos!");
+                    window.location.replace("admin.php?rt=admin/createQuestion");
+                }else{
+                    question_type = 1;
+                    pošalji_tip1();
+                }
             } else if (question_type === "id_type2") {
                 question_type = 2;
                 if ($("#answer1").val() == "" || $("#answer2").val() == "" || $("#answer3").val() == "" || $("#answer4").val() == "" ||
