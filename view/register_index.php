@@ -15,8 +15,11 @@
     <div class="log_2">
         <form class="forma" method="post" action="../home.php?rt=users/signUp">
             <label>Odaberi ime <input type="text" name="username"></label>
+            <br>
             <label>Odaberi lozinku <input type="password" name="password"></label>
+            <br>
             <label>Odaberi email <input type="text" name="email"></label>
+            <br>
             <label><input class="ulogirajse_2" type="submit" value="Registriraj se" name="signup"></label>
         </form>
     </div>

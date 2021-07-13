@@ -57,5 +57,5 @@
 
     console.log(xyValues);
 </script>
-
+<br><br><br><br><br>
 <?php require_once __DIR__ . '/_footer.php'; ?>

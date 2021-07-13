@@ -15,7 +15,9 @@
     <div class="log">
         <form class="forma" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
             <label>Ime <input type="text" name="username"></label>
+            <br>
             <label>Lozinka <input type="password" name="password"></label>
+            <br><br>
             <label><input class="ulogirajse" type="submit" value="Prijavi se" name="submit"></label>
         </form>
     </div>
@@ -27,9 +29,11 @@
         <p><b>Prijavi se kao admin</b></p>
         <form class="forma_admin" method="post" action="<?php echo dirname($_SERVER['PHP_SELF']) . '/admin.php'; ?>">
             <label>Ime <input type="text" name="username_admin"></label>
+            <br>
             <label>Lozinka <input type="password" name="password_admin"></label>
+            <br>
             <label><input class="ulogirajse" type="submit" value="Prijavi se" name="submit1"></label>
         </form>
     </div>
-
+<br><br><br><br><br>
 <?php require_once __DIR__ . '/_footer.php';?>

@@ -47,8 +47,6 @@ li a:hover {
   border: 1px solid rgb(156, 156, 156);
   border-radius: 5px;
   margin-top: 10px;
-  position: relative;
-  transform: translateX(100%);
   width: 400px;
   height: 150px;
   margin-top: 5%;
@@ -94,8 +92,6 @@ li a:hover {
   border-width: 1px;
   border-radius: 5px;
   border-color: rgb(156, 156, 156);
-  position: relative;
-  transform: translateX(150%);
   width: 300px;
   height: 190px;
   margin-top: 5%;
@@ -108,8 +104,6 @@ li a:hover {
   border-width: 1px;
   border-radius: 5px;
   border-color: rgb(156, 156, 156);
-  position: relative;
-  transform: translateX(150%);
   width: 300px;
   height: 80px;
   margin-top: 5%;
@@ -138,16 +132,15 @@ input {
 
 label {
   margin-bottom: 5px;
+  display: inline-block;
 }
 .ulogirajse {
-  transform: translateX(115%);
   border-style: solid;
   border-width: 1px;
   border-color: gray;
   border-radius: 0px;
 }
 .ulogirajse_2 {
-  transform: translateX(85%);
   border-style: solid;
   border-width: 1px;
   border-color: gray;
@@ -168,7 +161,6 @@ label {
   border-width: 1px;
   border-color: gray;
   border-radius: 0px;
-  transform: translateX(310%);
 }
 table,
 th,
@@ -301,6 +293,7 @@ td {
  }
 
  .footer {
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -368,6 +361,7 @@ p.pom{
 }
 
 #btn_dodaj, #btn_potvrdi, #btn_dodaj2{
+    width:100px;
     font-size: 20px;
     display: block;
     margin-left: auto;
